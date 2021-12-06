@@ -15,7 +15,7 @@ function LendingPage() {
                             <h1 className="text-center text-uppercase" style={{ color: "white" }}>WEBSITE UNTUK MAIN GAME TERKEREN DI
                                 DUNIA</h1>
 
-                            <a href="/game/1" className="btn  mt-5"
+                            <a href="/game" className="btn  mt-5"
                                 style={{ color: "white", backgroundColor: "#0a1f30", marginLeft: "auto", marginRight: "auto" }}>MAIN
                                 SEKARANG</a>
                         </div>
