@@ -31,7 +31,7 @@ export function getPlayedGame() {
             method: 'get', // or 'PUT'
             headers: {
                 'Content-Type': 'application/json',
-                'Authorization': "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJkYWRhbmcxMjNAZ21haWwuY29tIiwidXNlcm5hbWUiOiJkYWRhbmcxMjMiLCJpYXQiOjE2Mzg3ODc1NDl9.GQTUZPn1QfoO7ch-Nal5EaHWXGHzQbtFCM_zPRCIJH0"
+                'Authorization': localStorage.getItem('accessToken')
             },
         })
             .then(response => response.json())

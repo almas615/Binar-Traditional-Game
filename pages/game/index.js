@@ -40,7 +40,7 @@ const renderGameData = (game, playedGame) => {
                 isPlayed = true
             }
         })
-        console.log(isPlayed)
+   
         return (
             <div className={`card ${style["card-container"]}`} style={{ width: '300px',marginTop:"20px" }}>
                 <Image className="card-img-top mt-3" src={Pic1}></Image>
