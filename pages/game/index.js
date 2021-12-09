@@ -10,7 +10,7 @@ import Pic1 from '../../public/img/Coolsoccer.jpg'
 import { connect } from 'react-redux';
 import { getPlayedGame } from '../../redux/actions';
 
-import style from '../../styles/listGame.module.css'
+import style from '../../styles/ListGame.module.css'
 import { width } from 'dom-helpers';
 
 const mapStateToPros = (state) => {
