@@ -37,12 +37,14 @@ const Login = () => {
       <div className="row wrapper">
         <div className="col-10 col-lg-5">
           <form className="shadow-lg" onSubmit={submitHandler}>
-            <h1 className="mb-3">Login</h1>
+            <h1 className="mb-3" style={{ textAlign: 'center' }}>
+              SIGN IN
+            </h1>
             <div className="form-group">
-              <label htmlFor="email_field">Email</label>
+              <label htmlFor="username_field">Username</label>
               <input
                 type="text"
-                id="email_field"
+                id="username_field"
                 className="form-control"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
@@ -71,7 +73,9 @@ const Login = () => {
             </button>
             <span className="float-left mt-2">
               Don't have an account?
-              <a href="#"> Sign Up</a>
+              <Link href="/register" class="float-right mt-3">
+                Sign Up
+              </Link>
             </span>
           </form>
         </div>

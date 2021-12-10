@@ -16,36 +16,6 @@ a {
   box-sizing: border-box;
 }
 
-/* Login & Register */
-
-.wrapper {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-top: 5rem;
-  font-weight: 700;
-  margin-bottom: 2rem;
-}
-
-.wrapper form {
-  padding: 2.5rem 3rem;
-  height: 30rem;
-}
-
-.wrapper form .btn {
-  background-color: #6984cf;
-  border-color: white;
-  border-radius: 7px;
-  color: white;
-  margin-top: 2.5rem;
-  font-weight: bold;
-}
-
-.wrapper form a {
-  font-size: 0.9rem;
-  color: blueviolet;
-}
-
 /* Button Loader */
 .lds-dual-ring {
   display: inline-block;
@@ -69,4 +39,45 @@ a {
   100% {
     transform: rotate(360deg);
   }
+}
+
+/* Login & Register */
+
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+}
+
+.wrapper form {
+  padding: 2.5rem 3rem;
+  height: 30rem;
+}
+
+.wrapper .reg {
+  padding: 1rem 3rem;
+  height: 35rem;
+  margin-top: -3.5rem;
+  margin-bottom: -2.1rem;
+}
+
+.wrapper form .btn {
+  background-color: #6984cf;
+  border-color: white;
+  border-radius: 7px;
+  color: white;
+  margin-top: 2.5rem;
+  font-weight: bold;
+}
+
+.wrapper .reg .btn {
+  margin-top: -0.5rem;
+}
+
+.wrapper form a {
+  font-size: 0.9rem;
+  color: blueviolet;
 }
