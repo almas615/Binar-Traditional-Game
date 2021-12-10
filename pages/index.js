@@ -1,4 +1,5 @@
 import React, { Fragment, useEffect, useState } from 'react';
+
 import Layout from '../components/layout/Layout.js';
 import Image from 'next/image';
 import analogPict from '../public/img/analog.png';
