@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import jwt_decode from 'jwt-decode';
 import Link from 'next/link';
+import router from 'next/router';
 
 const Header = () => {
   const [user, setUser] = useState(null);
@@ -19,7 +20,12 @@ const Header = () => {
     } catch (error) {
       console.log(error.response);
     }
-  }, [user]);
+  }, []);
+
+  const logoutHandler = () => {
+    localStorage.clear();
+    location.reload();
+  };
 
   return (
     <div>
@@ -57,14 +63,16 @@ const Header = () => {
                     <a className="dropdown-item">Profile</a>
                   </Link>
                   <Link href="/">
-                    <a className="dropdown-item">Logout</a>
+                    <a className="dropdown-item" onClick={logoutHandler}>
+                      Logout
+                    </a>
                   </Link>
                 </div>
               </div>
             ) : (
               !loading && (
                 <Link href="login">
-                  <a className="btn btn-danger px-4 text-white login-header-btn float-right">
+                  <a className="btn btn-primary px-4 text-white login-header-btn float-right">
                     Login
                   </a>
                 </Link>
