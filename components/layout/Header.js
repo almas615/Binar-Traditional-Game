@@ -20,7 +20,7 @@ const Header = () => {
     } catch (error) {
       console.log(error.response);
     }
-  }, []);
+  }, [user]);
 
   const logoutHandler = () => {
     localStorage.clear();
@@ -33,12 +33,14 @@ const Header = () => {
         <div className="container">
           <div className="col-3 p-0">
             <div className="navbar-brand">
-              <img
-                style={{ cursor: 'pointer' }}
-                src="/img/goplay.png"
-                alt="Binar"
-                height="60px"
-              />
+              <Link href="/">
+                <img
+                  style={{ cursor: 'pointer' }}
+                  src="/img/goplay.png"
+                  alt="Binar"
+                  height="60px"
+                />
+              </Link>
             </div>
           </div>
 

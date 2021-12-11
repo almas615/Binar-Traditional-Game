@@ -24,7 +24,7 @@ const Login = () => {
     try {
       const result = await axios.post('http://localhost:4000/api/login', data);
       localStorage.setItem('accessToken', result.data.data.accessToken);
-      router.push('/');
+      router.push('/game');
     } catch (error) {
       setTimeout(() => {
         setLoading(false);
