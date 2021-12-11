@@ -1,6 +1,6 @@
 import React, { Fragment, useState, useEffect, Component } from 'react';
-import withAuth from '../../HOC/withAuth';
 import Layout from '../../components/layout/Layout';
+import withAuth from '../../HOC/withAuth';
 import Image from 'next/image';
 import axios from 'axios';
 
@@ -13,7 +13,6 @@ import { connect } from 'react-redux';
 import { getPlayedGame } from '../../redux/actions';
 
 import style from '../../styles/ListGame.module.css';
-import { width } from 'dom-helpers';
 
 const mapStateToPros = (state) => {
   return {

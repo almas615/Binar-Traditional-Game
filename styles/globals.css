@@ -81,3 +81,9 @@ a {
   font-size: 0.9rem;
   color: blueviolet;
 }
+
+/* Update Form */
+
+.wrapper .update-form form {
+  height: 58rem;
+}

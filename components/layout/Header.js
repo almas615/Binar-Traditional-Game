@@ -18,9 +18,12 @@ const Header = () => {
       const result = await axios.get('http://localhost:4000/api/me', config);
       setUser(result.data.user);
     } catch (error) {
-      console.log(error.response);
+      setTimeout(() => {
+        setLoading(false);
+        // toast.error(error.response.data.message);
+      }, 1000);
     }
-  }, [user]);
+  }, []);
 
   const logoutHandler = () => {
     localStorage.clear();

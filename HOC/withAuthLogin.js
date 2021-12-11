@@ -5,8 +5,6 @@ const withAuth = (WrappedComponent) => {
     if (typeof window !== 'undefined') {
       const router = useRouter();
       const accessToken = localStorage.getItem('accessToken');
-
-      console.log(accessToken);
       // If there is no access token we are redirect to "/" page.
       if (accessToken) {
         router.push('/game');
