@@ -137,7 +137,7 @@ class Game {
       console.log("Round: " + this.round)
   
       const comScore = document.getElementById("computer-score");
-      comScore.innerHTML = this.computer_score;
+      comScore.innerHTML = this.computer_score
   
       // Hapus kelas custom-vs-text & tambahkan kelas custom-green-vs-box
       // Cek kelas custom-vs-text & custom-green-vs-box di style.css
