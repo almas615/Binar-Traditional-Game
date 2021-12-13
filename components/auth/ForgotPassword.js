@@ -1,27 +1,40 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { toast } from 'react-toastify';
 
 const ForgotPassword = () => {
-  const sendEmail = (e) => {
+  const [email, setEmail] = useState('');
+  const sendEmail = async (e) => {
     e.preventDefault();
-    console.log('di klik');
+
+    if (!email) {
+      toast.error('Email is required');
+    } else {
+      const res = await axios.put('http://localhost:4000/api/forgotPassword', {
+        email,
+      });
+      setEmail('');
+      toast.success('Please check your email!');
+    }
   };
 
   return (
     <div className="container container-fluid">
       <div className="row wrapper">
         <div className="col-10 col-lg-5">
-          <form className="shadow-lg forgot">
+          <form className="shadow-lg forgot" onSubmit={sendEmail}>
             <h1 className="mb-3" style={{ textAlign: 'center' }}>
               Forgot Password
             </h1>
             <div className="form-group">
-              <label htmlFor="username_field">Email</label>
+              <label htmlFor="email_field">Email</label>
               <input
                 type="text"
-                id="username_field"
+                id="email_field"
                 className="form-control"
-                value=""
-                onChange={(e) => setUsername(e.target.value)}
+                value={email}
+                placeholder="Enter an email..."
+                onChange={(e) => setEmail(e.target.value)}
               />
             </div>
 
@@ -30,7 +43,6 @@ const ForgotPassword = () => {
               type="submit"
               className="btn btn-block py-3"
               style={{ marginBottom: '10px' }}
-              onClick={sendEmail}
             >
               Submit
             </button>

@@ -1,14 +1,13 @@
-import jwt_decode from 'jwt-decode';
-import ForgotPassword from '../components/auth/ForgotPassword';
+import ForgotPass from '../components/auth/ForgotPassword';
 import Layout from '../components/layout/Layout';
 import withAuthLogin from '../HOC/withAuthLogin';
 
-function LoginPage() {
+function ForgotPassword() {
   return (
     <Layout title="Forgot Password">
-      <ForgotPassword />
+      <ForgotPass />
     </Layout>
   );
 }
 
-export default withAuthLogin(LoginPage);
+export default withAuthLogin(ForgotPassword);
