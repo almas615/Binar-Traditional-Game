@@ -10,6 +10,12 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <meta
+            name="google-signin-client_id"
+            content="82188546756-iikurufha30hocipiu2f6f8i0hq91aua.apps.googleusercontent.com
+            "
+          />
+
           <link
             rel="stylesheet"
             type="text/css"
@@ -24,6 +30,11 @@ class MyDocument extends Document {
         <body>
           <Main />
           <NextScript />
+          <script
+            src="https://apis.google.com/js/platform.js"
+            async
+            defer
+          ></script>
           <script
             src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
             integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"

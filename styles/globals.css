@@ -53,8 +53,9 @@ a {
 }
 
 .wrapper form {
+  margin-top: -4rem;
   padding: 2.5rem 3rem;
-  height: 30rem;
+  height: 34rem;
 }
 
 .wrapper .reg {
@@ -62,6 +63,22 @@ a {
   height: 35rem;
   margin-top: -3.5rem;
   margin-bottom: -2.1rem;
+}
+
+.wrapper .forgot {
+  padding: 2rem 3rem;
+  height: 18rem;
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+}
+
+.wrapper .forgot .btn {
+  background-color: #6984cf;
+  border-color: white;
+  border-radius: 7px;
+  color: white;
+  margin-top: 1rem;
+  font-weight: bold;
 }
 
 .wrapper form .btn {

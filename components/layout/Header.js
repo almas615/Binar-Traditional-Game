@@ -76,7 +76,7 @@ const Header = () => {
               </div>
             ) : (
               !loading && (
-                <Link href="login">
+                <Link href="/login">
                   <a className="btn btn-primary px-4 text-white login-header-btn float-right">
                     Login
                   </a>
