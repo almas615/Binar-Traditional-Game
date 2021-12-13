@@ -38,7 +38,7 @@ const renderGameData = (game, playedGame) => {
         isPlayed = true;
       }
     });
-    console.log(isPlayed);
+
     return (
       <div
         className={`card ${style['card-container']}`}
