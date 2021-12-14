@@ -1,11 +1,11 @@
 import { combineReducers } from 'redux';
-import { authReducer, userReducer } from './userReducer';
+import { loginReducer, registerReducer } from './userReducer';
 import { getPlayedReducer } from './getPlayedReduer';
 
 const reducer = combineReducers({
-  playedGames: getPlayedReducer,
-  auth: authReducer,
-  user: userReducer,
+  played: getPlayedReducer,
+  register: registerReducer,
+  login: loginReducer,
 });
 
 export default reducer;

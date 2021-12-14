@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
-import axios from 'axios';
 import { useRouter } from 'next/router';
 
 import { toast } from 'react-toastify';
@@ -21,7 +20,7 @@ const Register = () => {
 
   const { first_name, last_name, email, username, password } = user;
 
-  const { success, error, loading } = useSelector((state) => state.auth);
+  const { success, error, loading } = useSelector((state) => state.register);
 
   useEffect(() => {
     if (success) {

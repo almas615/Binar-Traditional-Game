@@ -10,13 +10,14 @@ import Pic1 from '../../public/img/Coolsoccer.jpg';
 // import Pic4 from '../images/Streetfighter.jpeg'
 
 import { connect } from 'react-redux';
-import { getPlayedGame } from '../../redux/actions';
+import { getPlayedGame } from '../../redux/actions/getPlayedActions';
 
 import style from '../../styles/ListGame.module.css';
 
 const mapStateToPros = (state) => {
+  console.log(state.playedGames, 'ini lho hasile');
   return {
-    playedGames: state.playedGames,
+    playedGames: state.played,
   };
 };
 

@@ -1,38 +1,57 @@
-import React, { useState } from 'react';
-import GoogleButton from 'react-google-button';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import ButtonLoader from '../../components/layout/ButtonLoader';
-
 import { toast } from 'react-toastify';
 import axios from 'axios';
 import GoogleLogin from 'react-google-login';
+import { clearErrors, userLogin } from '../../redux/actions/userActions';
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const router = useRouter();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
-  const router = useRouter();
+  // const [loading, setLoading] = useState(false);
+
+  const { loading, success, error } = useSelector((state) => state.login);
+
+  useEffect(() => {
+    if (success) {
+      toast.success(success);
+      setTimeout(() => {
+        router.push('/game');
+      }, 6000);
+
+      if (error) {
+        toast.error(error);
+        dispatch(clearErrors());
+      }
+    }
+  }, [dispatch, success, error]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    const data = {
+    const loginData = {
       username,
       password,
     };
 
-    setLoading(true);
+    dispatch(userLogin(loginData));
 
-    try {
-      const result = await axios.post('http://localhost:4000/api/login', data);
-      localStorage.setItem('accessToken', result.data.data.accessToken);
-      router.push('/game');
-    } catch (error) {
-      setTimeout(() => {
-        setLoading(false);
-        toast.error(error.response.data.message);
-      }, 1000);
-    }
+    // setLoading(true);
+
+    // try {
+    //   const result = await axios.post('http://localhost:4000/api/login', data);
+    //
+    //   router.push('/game');
+    // } catch (error) {
+    //   setTimeout(() => {
+    //     setLoading(false);
+    //     toast.error(error.response.data.message);
+    //   }, 1000);
+    // }
   };
 
   const responseGoogle = async (response) => {

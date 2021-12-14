@@ -7,7 +7,7 @@ export function getPlayedGame() {
       method: 'get', // or 'PUT'
       headers: {
         'Content-Type': 'application/json',
-        Authorization: localStorage.getItem('accessToken'),
+        authorization: localStorage.getItem('accessToken'),
       },
     })
       .then((response) => response.json())
