@@ -64,7 +64,7 @@ const Header = () => {
                   className="dropdown-menu"
                   aria-labelledby="dropDownMenuButton"
                 >
-                  <Link href="/me/update">
+                  <Link href="/me/profile">
                     <a className="dropdown-item">Profile</a>
                   </Link>
                   <Link href="/">

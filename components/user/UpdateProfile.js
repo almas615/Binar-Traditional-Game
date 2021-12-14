@@ -6,7 +6,7 @@ import { toast } from 'react-toastify';
 import ButtonLoader from '../layout/ButtonLoader';
 import Loader from '../layout/Loader';
 
-const Profile = () => {
+const UpdateProfile = () => {
   const [user, setUser] = useState({
     first_name: '',
     last_name: '',
@@ -214,4 +214,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default UpdateProfile;
