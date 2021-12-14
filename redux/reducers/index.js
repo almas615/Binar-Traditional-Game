@@ -1,25 +1,11 @@
-const initialState = {
-	isLoggedIn: false,
-	currentUserId: '',
-	allUsers: [],
-    playedGames: []
-}
+import { combineReducers } from 'redux';
+import { authReducer, userReducer } from './userReducer';
+import { getPlayedReducer } from './getPlayedReduer';
 
-const reducer = (state = initialState, action) => {
-	switch(action.type) {
-		case 'USER_LOG_IN':
-			return { ...state, isLoggedIn: true };
-		case 'USER_LOG_OUT':
-			return { ...state, isLoggedIn: false };
-		case 'USER_SET_ID':
-			return { ...state, currentUserId: action.payload };
-		case 'USER_DATA_LOADED':
-			return { ...state, allUsers: action.payload };
-		case 'GAME_DATA_LOADED':
-			return { ...state, playedGames: action.payload };
-		default:
-			return state;
-	}
-}
+const reducer = combineReducers({
+  playedGames: getPlayedReducer,
+  auth: authReducer,
+  user: userReducer,
+});
 
 export default reducer;

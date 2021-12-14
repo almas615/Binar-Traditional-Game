@@ -20,7 +20,6 @@ const Header = () => {
     } catch (error) {
       setTimeout(() => {
         setLoading(false);
-        // toast.error(error.response.data.message);
       }, 1000);
     }
   }, []);

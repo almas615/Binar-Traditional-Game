@@ -1,14 +1,16 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
 import axios from 'axios';
 import { useRouter } from 'next/router';
 
 import { toast } from 'react-toastify';
 import ButtonLoader from '../layout/ButtonLoader';
+import { clearErrors, registerUser } from '../../redux/actions/userActions';
 
 const Register = () => {
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
   const [user, setUser] = useState({
     first_name: '',
     last_name: '',
@@ -18,6 +20,22 @@ const Register = () => {
   });
 
   const { first_name, last_name, email, username, password } = user;
+
+  const { success, error, loading } = useSelector((state) => state.auth);
+
+  useEffect(() => {
+    if (success) {
+      toast.success(success);
+      setTimeout(() => {
+        router.push('/login');
+      }, 6000);
+    }
+
+    if (error) {
+      toast.error(error);
+      dispatch(clearErrors());
+    }
+  }, [dispatch, success, error]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -30,20 +48,7 @@ const Register = () => {
       password,
     };
 
-    setLoading(true);
-
-    try {
-      const result = await axios.post(
-        'http://localhost:4000/api/register',
-        userData
-      );
-      router.push('/login');
-    } catch (error) {
-      setTimeout(() => {
-        setLoading(false);
-        toast.error(error.response.data.error);
-      }, 1000);
-    }
+    dispatch(registerUser(userData));
   };
 
   const onChange = (e) => {
@@ -128,7 +133,7 @@ const Register = () => {
               {loading ? <ButtonLoader /> : 'Sign up'}
             </button>
             <span className="float-left mt-2">
-              Don't have an account?
+              Already have an account?
               <Link href="/login" class="float-right mt-3">
                 Sign in
               </Link>
