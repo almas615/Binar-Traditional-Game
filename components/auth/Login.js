@@ -1,19 +1,18 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import Link from 'next/link';
-import { useRouter } from 'next/router';
-import ButtonLoader from '../../components/layout/ButtonLoader';
-import { toast } from 'react-toastify';
-import axios from 'axios';
-import GoogleLogin from 'react-google-login';
 import { clearErrors, userLogin } from '../../redux/actions/userActions';
+import { useRouter } from 'next/router';
+import { toast } from 'react-toastify';
+import ButtonLoader from '../../components/layout/ButtonLoader';
+import GoogleLogin from 'react-google-login';
+import Link from 'next/link';
+import axios from 'axios';
 
 const Login = () => {
   const dispatch = useDispatch();
   const router = useRouter();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  // const [loading, setLoading] = useState(false);
 
   const { loading, success, error } = useSelector((state) => state.login);
 
@@ -23,11 +22,10 @@ const Login = () => {
       setTimeout(() => {
         router.push('/game');
       }, 6000);
-
-      if (error) {
-        toast.error(error);
-        dispatch(clearErrors());
-      }
+    }
+    if (error) {
+      toast.error(error);
+      dispatch(clearErrors());
     }
   }, [dispatch, success, error]);
 
@@ -39,19 +37,6 @@ const Login = () => {
     };
 
     dispatch(userLogin(loginData));
-
-    // setLoading(true);
-
-    // try {
-    //   const result = await axios.post('http://localhost:4000/api/login', data);
-    //
-    //   router.push('/game');
-    // } catch (error) {
-    //   setTimeout(() => {
-    //     setLoading(false);
-    //     toast.error(error.response.data.message);
-    //   }, 1000);
-    // }
   };
 
   const responseGoogle = async (response) => {

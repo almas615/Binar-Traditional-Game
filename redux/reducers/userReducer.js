@@ -5,6 +5,9 @@ import {
   LOGIN_USER_REQUEST,
   LOGIN_USER_SUCCESS,
   LOGIN_USER_FAIL,
+  LOAD_USER_REQUEST,
+  LOAD_USER_SUCCESS,
+  LOAD_USER_FAIL,
   CLEAR_ERRORS,
 } from '../constants/userConstants';
 
@@ -49,7 +52,34 @@ export const loginReducer = (state = {}, action) => {
       };
     case LOGIN_USER_FAIL:
       return {
+        loading: true,
+        error: action.payload,
+      };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
+    default:
+      return state;
+  }
+};
+
+// loadUserReducer
+export const loadUserReducer = (state = { user: null }, action) => {
+  switch (action.type) {
+    case LOAD_USER_REQUEST:
+      return {
+        loading: true,
+      };
+    case LOAD_USER_SUCCESS:
+      return {
         loading: false,
+        user: action.payload,
+      };
+    case LOAD_USER_FAIL:
+      return {
+        loading: true,
         error: action.payload,
       };
     case CLEAR_ERRORS:

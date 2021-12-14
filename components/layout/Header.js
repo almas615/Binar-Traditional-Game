@@ -1,28 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import jwt_decode from 'jwt-decode';
+import { useSelector, useDispatch } from 'react-redux';
+import { loadUser } from '../../redux/actions/userActions';
 import Link from 'next/link';
-import router from 'next/router';
 
 const Header = () => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const { user, loading } = useSelector((state) => state.loadUser);
 
-  useEffect(async () => {
-    try {
-      const config = {
-        headers: {
-          authorization: `${localStorage.getItem('accessToken')}`,
-        },
-      };
-      const result = await axios.get('http://localhost:4000/api/me', config);
-      setUser(result.data.user);
-    } catch (error) {
-      setTimeout(() => {
-        setLoading(false);
-      }, 1000);
-    }
-  }, []);
+  useEffect(() => {
+    dispatch(loadUser());
+  }, [dispatch]);
 
   const logoutHandler = () => {
     localStorage.clear();
@@ -74,7 +61,7 @@ const Header = () => {
                 </div>
               </div>
             ) : (
-              !loading && (
+              loading && (
                 <Link href="/login">
                   <a className="btn btn-primary px-4 text-white login-header-btn float-right">
                     Login
