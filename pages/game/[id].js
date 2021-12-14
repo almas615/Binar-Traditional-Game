@@ -1,8 +1,17 @@
 import React, { Fragment, useState, useEffect, Component } from 'react'
 import { useRouter, withRouter, NextRouter } from 'next/router'
-
+import Layout from '../../components/layout/Layout';
+import Image from 'next/image'
 import style from '../../styles/DetailGame.module.css'
-
+import prsPict from '../../public/img/RockPaperScissor.jpg';
+import {
+    FacebookShareButton,
+    FacebookIcon,
+    TwitterShareButton,
+    TwitterIcon,
+    WhatsappShareButton,
+    WhatsappIcon,
+} from 'next-share';
 function renderTableData(leaderboard) {
     return leaderboard.map((e, index) => {
         return (
@@ -43,56 +52,91 @@ function detail() {
     }, [router.isReady])
     return (
         <Fragment>
-    
-            <section id={style["judul"]}>
-                <div className="container">
-                    <div className="row d-flex justify-content-center align-items-center" style={{ height: "50vh" }}>
-                        <div className="col-11 d-flex flex-column justify-content-center">
-                            <h1 className="text-center text-uppercase mt-5" style={{ color: "white" }}> SELAMAT DATANG DI GAME <br></br><p style={{ fontSize: "70px" }}>{game.name}</p> </h1>
+            <Layout title={`Game | ${game.name}`}>
+                <div id={style['content-container']}>
+                    <section id={style["judul"]}>
+                        <div className="container">
+                            <div className="row d-flex flex-column justify-content-center align-items-center" style={{ minHeight: "100vh" }} >
+                                <div className="col-6" >
 
-                            <a href="/game/1" className="btn  mt-5"
-                                style={{ color: "white", backgroundColor: "#0a1f30", marginLeft: "auto", marginRight: "auto" }}>MAIN
-                                SEKARANG</a>
+                                    <Image
+                                        src={prsPict}
+                                        className="img d-block w-100"
+                                        alt="..."
+                                        layout='responsive'
+                                    ></Image>
+                                </div>
+                                <div className="col-11 d-flex flex-column justify-content-center">
+                                    <h1 className="text-center text-uppercase mt-5" style={{ color: "black" }}> SELAMAT DATANG DI GAME <br></br><p style={{ fontSize: "70px" }}>{game.name}</p> </h1>
+
+                                    <a href="/game/1" className="btn  mt-3"
+                                        style={{ color: "white", backgroundColor: "#0a1f30", marginLeft: "auto", marginRight: "auto" }}>MAIN
+                                        SEKARANG</a>
+                                </div>
+                            </div>
                         </div>
+                    </section>
+                    <section id={style["list-game"]}>
+                        <div className="container">
+                            <div className="row d-flex flex-column justify-content-center align-items-center" style={{ minHeight: "100vh" }}>
+                                <div className="col-6 d-flex flex-column justify-content-center align-items-center">
+                                    <h1 className="text-center text-uppercase" style={{ color: "black" }}>LEADERBOARD</h1>
+
+                                </div>
+                                <div className="col-6 mt-5">
+                                    <table className="table">
+                                        <thead>
+                                            <tr>
+                                                <th scope="col">Rangking</th>
+                                                <th scope="col">Username</th>
+                                                <th scope="col">Nama</th>
+                                                <th scope="col">Score</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {renderTableData(leaderboard)}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+
+                    </section>
+                </div>
+                <div className={`${style["sticky"]} container-flluid`}>
+
+                    <div className={` row d-flex flex-column align-items-end`}>
+
+                        <FacebookShareButton
+                            style={{ width: "32px", marginRight: "20px" }}
+                            url={'https://github.com/next-share'}
+                            quote={'next-share is a social share buttons for your next React apps.'}
+                            hashtag={'#nextshare'}
+                        >
+                            <FacebookIcon size={32} round />
+                        </FacebookShareButton>
+                        <TwitterShareButton
+                            style={{ width: "32px", marginRight: "20px" }}
+                            url={'https://github.com/next-share'}
+                            title={'next-share is a social share buttons for your next React apps.'}
+                        >
+                            <TwitterIcon size={32} round />
+                        </TwitterShareButton>
+                        <WhatsappShareButton
+                            style={{ width: "32px", marginRight: "20px" }}
+                            url={'https://github.com/next-share'}
+                            title={'next-share is a social share buttons for your next React apps.'}
+                            separator=":: "
+                        >
+                            <WhatsappIcon size={32} round />
+                        </WhatsappShareButton>
                     </div>
                 </div>
-            </section>
-            <div className="waves">
-
-                <svg style={{ backgroundColor: "#7f909d" }} xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 1440 320">
-                    <path fill="#334756" fill-opacity="1"
-                        d="M0,160L360,224L720,224L1080,288L1440,224L1440,0L1080,0L720,0L360,0L0,0Z"></path>
-                </svg>
-            </div>
-            <section id={style["list-game"]}>
-                <div className="container">
-                    <div className="row d-flex flex-wrap justify-content-start align-items-center" style={{ height: "50vh" }}>
-                        <div className="col-6 d-flex flex-column justify-content-center align-items-center">
-                            <h1 className="text-center text-uppercase" style={{ color: "white" }}>JADILAH JUARA DI GAME INI</h1>
-
-                        </div>
-                        <div className="col-6 mt-5">
-                            <table className="table">
-                                <thead>
-                                    <tr>
-                                        <th scope="col">Rangking</th>
-                                        <th scope="col">Username</th>
-                                        <th scope="col">Nama</th>
-                                        <th scope="col">Score</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    {renderTableData(leaderboard)}
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-
-            </section>
 
 
+
+
+            </Layout>
         </Fragment>
     );
 }
