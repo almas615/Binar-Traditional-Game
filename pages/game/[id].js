@@ -69,7 +69,7 @@ function detail() {
                                 <div className="col-11 d-flex flex-column justify-content-center">
                                     <h1 className="text-center text-uppercase mt-5" style={{ color: "black" }}> SELAMAT DATANG DI GAME <br></br><p style={{ fontSize: "70px" }}>{game.name}</p> </h1>
 
-                                    <a href="/game/1" className="btn  mt-3"
+                                    <a href={game.game_url} className="btn  mt-3"
                                         style={{ color: "white", backgroundColor: "#0a1f30", marginLeft: "auto", marginRight: "auto" }}>MAIN
                                         SEKARANG</a>
                                 </div>
