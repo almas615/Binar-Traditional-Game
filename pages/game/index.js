@@ -15,7 +15,6 @@ import { getPlayedGame } from '../../redux/actions/getPlayedActions';
 import style from '../../styles/ListGame.module.css';
 
 const mapStateToPros = (state) => {
-  console.log(state.playedGames, 'ini lho hasile');
   return {
     playedGames: state.played,
   };
@@ -34,7 +33,7 @@ const playedTag = () => {
 const renderGameData = (game, playedGame) => {
   return game.map((game, index) => {
     let isPlayed = false;
-    playedGame.map((played) => {
+    playedGame.playedGames.map((played) => {
       if (game.id == played.gameId) {
         isPlayed = true;
       }
