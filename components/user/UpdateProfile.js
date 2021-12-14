@@ -81,7 +81,7 @@ const UpdateProfile = () => {
         config
       );
       setLoading(false);
-      router.push('/game');
+      router.push('/me/profile');
     } catch (error) {
       console.log(error.response);
     }
@@ -96,118 +96,122 @@ const UpdateProfile = () => {
       {loading ? (
         <Loader />
       ) : (
-        <div className="container container-fluid">
-          <div className="row wrapper">
-            <div className="col-10 col-lg-5 update-form">
-              <form className="shadow-lg" onSubmit={submitHandler}>
-                <h1 className="mb-3">Update Profile</h1>
+        <div className="update-background">
+        <div className="update-bg-image">
+          <div className="container container-fluid">
+            <div className="row wrapper">
+              <div className="col-10 col-lg-5 update-form">
+                <form className="shadow-lg" onSubmit={submitHandler}>
+                  <h1 className="mb-3">Update Profile</h1>
 
-                <div className="form-group">
-                  <label htmlFor="name_field">First Name</label>
-                  <input
-                    type="text"
-                    id="name_field"
-                    className="form-control"
-                    name="first_name"
-                    value={first_name}
-                    onChange={onChange}
-                  />
-                </div>
+                  <div className="form-group">
+                    <label htmlFor="name_field">First Name</label>
+                    <input
+                      type="text"
+                      id="name_field"
+                      className="form-control"
+                      name="first_name"
+                      value={first_name}
+                      onChange={onChange}
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <label htmlFor="name_field">Last Name</label>
-                  <input
-                    type="text"
-                    id="name_field"
-                    className="form-control"
-                    name="last_name"
-                    value={last_name}
-                    onChange={onChange}
-                  />
-                </div>
+                  <div className="form-group">
+                    <label htmlFor="name_field">Last Name</label>
+                    <input
+                      type="text"
+                      id="name_field"
+                      className="form-control"
+                      name="last_name"
+                      value={last_name}
+                      onChange={onChange}
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <label htmlFor="email_field">Email</label>
-                  <input
-                    type="email"
-                    id="email_field"
-                    className="form-control"
-                    name="email"
-                    value={email}
-                    onChange={onChange}
-                  />
-                </div>
+                  <div className="form-group">
+                    <label htmlFor="email_field">Email</label>
+                    <input
+                      type="email"
+                      id="email_field"
+                      className="form-control"
+                      name="email"
+                      value={email}
+                      onChange={onChange}
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <label htmlFor="name_field">Username</label>
-                  <input
-                    type="text"
-                    id="name_field"
-                    className="form-control"
-                    name="username"
-                    value={username}
-                    onChange={onChange}
-                  />
-                </div>
+                  <div className="form-group">
+                    <label htmlFor="name_field">Username</label>
+                    <input
+                      type="text"
+                      id="name_field"
+                      className="form-control"
+                      name="username"
+                      value={username}
+                      onChange={onChange}
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <label htmlFor="name_field">Bio</label>
-                  <input
-                    type="text"
-                    id="name_field"
-                    className="form-control"
-                    name="bio"
-                    value={bio}
-                    onChange={onChange}
-                  />
-                </div>
+                  <div className="form-group">
+                    <label htmlFor="name_field">Bio</label>
+                    <input
+                      type="text"
+                      id="name_field"
+                      className="form-control"
+                      name="bio"
+                      value={bio}
+                      onChange={onChange}
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <label htmlFor="name_field">Location</label>
-                  <input
-                    type="text"
-                    id="name_field"
-                    className="form-control"
-                    name="location"
-                    value={location}
-                    onChange={onChange}
-                  />
-                </div>
+                  <div className="form-group">
+                    <label htmlFor="name_field">Location</label>
+                    <input
+                      type="text"
+                      id="name_field"
+                      className="form-control"
+                      name="location"
+                      value={location}
+                      onChange={onChange}
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <label htmlFor="name_field">Social Media</label>
-                  <input
-                    type="text"
-                    id="name_field"
-                    className="form-control"
-                    name="social_media_url"
-                    value={social_media_url}
-                    onChange={onChange}
-                  />
-                </div>
+                  <div className="form-group">
+                    <label htmlFor="name_field">Social Media</label>
+                    <input
+                      type="text"
+                      id="name_field"
+                      className="form-control"
+                      name="social_media_url"
+                      value={social_media_url}
+                      onChange={onChange}
+                    />
+                  </div>
 
-                <div className="form-group">
-                  <label htmlFor="password_field">Password</label>
-                  <input
-                    type="password"
-                    id="password_field"
-                    className="form-control"
-                    name="password"
-                    onChange={onChange}
-                  />
-                </div>
+                  <div className="form-group">
+                    <label htmlFor="password_field">Password</label>
+                    <input
+                      type="password"
+                      id="password_field"
+                      className="form-control"
+                      name="password"
+                      onChange={onChange}
+                    />
+                  </div>
 
-                <button
-                  id="login_button"
-                  type="submit"
-                  className="btn btn-block py-3"
-                  disabled={loading ? true : false}
-                >
-                  {loading ? <ButtonLoader /> : 'UPDATE'}
-                </button>
-              </form>
+                  <button
+                    id="login_button"
+                    type="submit"
+                    className="btn btn-block py-3"
+                    disabled={loading ? true : false}
+                  >
+                    {loading ? <ButtonLoader /> : 'UPDATE'}
+                  </button>
+                </form>
+              </div>
             </div>
           </div>
+        </div>
         </div>
       )}
     </>
