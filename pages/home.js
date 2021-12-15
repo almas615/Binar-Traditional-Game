@@ -1,22 +1,15 @@
-import styles from '../styles/Home.module.css'
-import Image from 'next/image'
-import { style } from 'dom-helpers'
+import React from 'react';
 
-export default function Home() {
+import Home from '../components/Home';
+import Layout from '../components/layout/Layout';
+import withAuth from '../HOC/withAuth';
+  
+const HomePage = () => {
     return (
-        <div>
-            <div className={styles.content}>
-                <div className={styles.intro}>
-                    {/* <h1>Hello, {localStorage.getItem('username')}</h1> */}
-                    <h1>Hello, </h1>
-                    <p>Welcome to BINAR GAMES.</p>
-                    <p>We have more than hundreds of free online games for all ages. Play Now!</p>
-                    <a href='/listgames' className={styles.btnplaygame}>Click here</a>
-                </div>
-                <div>
-                <Image className={styles.homepic} src='/pngegg.png' width={400} height={300}/>
-                </div>
-            </div>
-        </div>
-    )
-  }
+        <Layout title="Profile Details">
+            <Home />
+        </Layout>
+    );
+};
+  
+export default withAuth(HomePage);
