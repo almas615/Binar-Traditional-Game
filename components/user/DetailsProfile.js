@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import router, { useRouter } from 'next/router';
-import Link from 'next/link';
 
 const DetailsProfile = () => {
   const [user, setUser] = useState({
@@ -47,51 +46,51 @@ const DetailsProfile = () => {
   }, []);
 
   return (
-        <div className="profile-bg-image">
-            <div>
-                <div className="container profile-background">
-                    <br/>
-                    <br/>
-                    <div className="text-center">
-                        <img className="img" src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg" alt={user.name} width="150" height="150"/>
-                    </div>
-                    <br/>
-                    <h3 className="text-center">@{username}</h3>
-                    <br/>
-                    <br/>
-                    <h4 className="text-center">{first_name} {last_name}</h4>
-                    <br/>
-                    <br/>
-                    <div className="container">
-                        <div className="row">
-                            <div className="col-2"><strong>EMAIL:</strong></div>
-                            <div className="col-10">{email}</div>
-                        </div>
-                        <br/>
-                        <div className="row">
-                            <div className="col-2"><strong>BIO:</strong></div>
-                            <div className="col-10">{bio}</div>
-                        </div>
-                        <br/>
-                        <div className="row">
-                            <div className="col-2"><strong>LOCATION:</strong></div>
-                            <div className="col-10">{location}</div>
-                        </div>
-                        <br/>
-                        <div className="row">
-                            <div className="col-2"><strong>SOCIAL MEDIA:</strong></div>
-                            <div className="col-10">{social_media_url}</div>
-                        </div>
-                        <br/>
-                        <br/>
-                        <div className="text-center">
-                            <Link href="/me/update"><a className="btn">Update your profile</a></Link>
-                        </div>
-                    </div>
-                    <br/>
-                </div>
+    <div className="profile-bg-image">
+      <div>
+        <div className="container profile-background">
+          <br />
+          <br />
+          <div className="text-center">
+            <img className="img" src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg" alt={user.name} width="150" height="150" />
+          </div>
+          <br />
+          <h3 className="text-center">@{username}</h3>
+          <br />
+          <br />
+          <h4 className="text-center">{first_name} {last_name}</h4>
+          <br />
+          <br />
+          <div className="container">
+            <div className="row">
+              <div className="col-2"><strong>EMAIL:</strong></div>
+              <div className="col-10">{email}</div>
             </div>
+            <br />
+            <div className="row">
+              <div className="col-2"><strong>BIO:</strong></div>
+              <div className="col-10">{bio}</div>
+            </div>
+            <br />
+            <div className="row">
+              <div className="col-2"><strong>LOCATION:</strong></div>
+              <div className="col-10">{location}</div>
+            </div>
+            <br />
+            <div className="row">
+              <div className="col-2"><strong>SOCIAL MEDIA:</strong></div>
+              <div className="col-10">{social_media_url}</div>
+            </div>
+            <br />
+            <br />
+            <div className="text-center">
+              <a className="btn" href="/me/update">Update your profile</a>
+            </div>
+          </div>
+          <br />
         </div>
+      </div>
+    </div>
   );
 };
 

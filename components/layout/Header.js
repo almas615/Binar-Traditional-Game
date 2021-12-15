@@ -47,11 +47,11 @@ const Header = () => {
               <a className="navbrand">BINAR GAMES</a>
             </div>
           </div>
-          
-          <Link href="/home"><a className="btn nav-links">HOME</a></Link>
-          <Link href="/game"><a className="btn nav-links">GAMES LIST</a></Link>
-          <Link href="/"><a className="btn nav-links">NEWSLETTER</a></Link>
-          <Link href="/"><a className="btn nav-links">CONTACT</a></Link>
+
+          <a className="btn nav-links" href="/home">HOME</a>
+          <a className="btn nav-links" href="/game">LIST GAMES</a>
+          <a className="btn nav-links" href="/">NEWSLETTER</a>
+          <a className="btn nav-links" href="/">CONTACT</a>
 
           <div className="col-3 mt-3 mt-md-0 text-center">
             {user ? (
@@ -70,12 +70,12 @@ const Header = () => {
                   className="dropdown-menu"
                   aria-labelledby="dropDownMenuButton"
                 >
-                <Link href="/me/profile">
-                  <a className="dropdown-item">Profile</a>
-                </Link>
-                <Link href="/">
-                  <a className="dropdown-item" onClick={logoutHandler}>Logout</a>
-                </Link>
+                  <Link href="/me/profile">
+                    <a className="dropdown-item">Profile</a>
+                  </Link>
+                  <Link href="/">
+                    <a className="dropdown-item" onClick={logoutHandler}>Logout</a>
+                  </Link>
                 </div>
               </div>
             ) : (
