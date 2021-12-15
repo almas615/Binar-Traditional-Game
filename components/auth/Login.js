@@ -26,7 +26,7 @@ const Login = () => {
     try {
       const result = await axios.post('http://localhost:4000/api/login', data);
       localStorage.setItem('accessToken', result.data.data.accessToken);
-      router.push('/');
+      router.push('/home');
     } catch (error) {
       setTimeout(() => {
         setLoading(false);
@@ -42,7 +42,7 @@ const Login = () => {
         tokenId,
       });
       localStorage.setItem('accessToken', result.data.data.accessToken);
-      router.push('/');
+      router.push('/home');
     } catch (error) {
       console.log(error.response);
     }

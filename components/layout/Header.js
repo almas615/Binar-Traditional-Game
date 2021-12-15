@@ -48,8 +48,8 @@ const Header = () => {
             </div>
           </div>
           
-          <a className="btn nav-links" href="/">HOME</a>
-          <a className="btn nav-links" href="/">LIST GAMES</a>
+          <a className="btn nav-links" href="/home">HOME</a>
+          <a className="btn nav-links" href="/game">LIST GAMES</a>
           <a className="btn nav-links" href="/">NEWSLETTER</a>
           <a className="btn nav-links" href="/">CONTACT</a>
 

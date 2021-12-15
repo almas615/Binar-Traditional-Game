@@ -233,3 +233,66 @@ footer {
   border: 5px solid #0a1f30;
   background-color: lightgray;
 }
+
+
+/* Home */
+.home-bg-image {
+  background-image: url('../public/img/bgconsole.jpg');
+  background-repeat: repeat;
+  background-size: 30%;
+  color: #0a1f30;
+  font-family: 'Poppins', sans-serif;
+}
+
+.home-background {
+  width: 100%;
+  height: 222mm;
+}
+
+.home-box {
+  background-color: #f6f8ffe3;
+  border-radius: 3rem;
+}
+
+.home-box h1{
+  font-size: 60px;
+}
+
+.home-box p{
+  font-size: 20px;
+}
+
+.home-box .btn {
+  background-color: #f00;
+  border-radius: 7px;
+  color: white;
+  font-size: 20px;
+  font-family: 'Lato', sans-serif !important;
+}
+
+.home-img img {
+  border: solid #0a1f30;
+  border-width: 2mm;
+  border-radius: 10rem;
+  height: 220px;
+  transition: .5s ease;
+  margin-bottom: 5rem;
+}
+
+.home-img img:hover{
+  height: 240px;
+  transition: .5s ease;
+  cursor: pointer;
+}
+
+.home-img .img-margin{
+  margin-left: 10mm;
+}
+
+.home-background h3 {
+  font-size: 30pt;
+}
+
+.game-list-bg {
+  background-image: url('../public/img/bgconsole.jpg');
+}

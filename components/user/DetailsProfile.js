@@ -8,11 +8,9 @@ const DetailsProfile = () => {
     last_name: '',
     email: '',
     username: '',
-    password: '',
     bio: '',
     location: '',
     social_media_url: '',
-    password: '',
   });
 
   const {
@@ -38,7 +36,6 @@ const DetailsProfile = () => {
         last_name: result.data.user.last_name,
         email: result.data.user.email,
         username: result.data.user.username,
-        password: result.data.user.password,
         bio: result.data.user.bio,
         location: result.data.user.location,
         social_media_url: result.data.user.social_media_url,
