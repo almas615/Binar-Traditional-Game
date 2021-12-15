@@ -6,6 +6,7 @@ import {
   updateReducer,
 } from './userReducer';
 import { getPlayedReducer } from './getPlayedReduer';
+import { monopoliScoreReducer } from './monopoliScoreReducer';
 
 const reducer = combineReducers({
   played: getPlayedReducer,

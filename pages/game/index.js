@@ -4,7 +4,7 @@ import withAuth from '../../HOC/withAuth';
 import Image from 'next/image';
 import axios from 'axios';
 
-import Pic1 from '../../public/img/Coolsoccer.jpg';
+import Pic1 from '../../public/img/RockPaperScissor.jpg';
 // import Pic2 from '../images/Coolsoccer.jpg'
 // import Pic3 from '../images/Spaceinvaders.jpg'
 // import Pic4 from '../images/Streetfighter.jpeg'
@@ -51,7 +51,7 @@ const renderGameData = (game, playedGame) => {
           <a
             href={`/game/${game.id}`}
             className="btn"
-            style={{ backgroundColor: '#6984CF' }}
+            style={{ backgroundColor: 'red', color: 'white' }}
           >
             Play Game
           </a>
@@ -83,10 +83,10 @@ const ListGame = (props) => {
     <Fragment>
       <Layout title="List Game">
         <div
-          className={'container-fluid'}
+          className={'container-fluid game-list-bg'}
           style={{
             backgroundColor: '#F6F8FF',
-            height: '100vh',
+            height: '222mm',
             paddingTop: '20px',
           }}
         >

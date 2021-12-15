@@ -22,7 +22,7 @@ const Login = () => {
     if (success) {
       toast.success(success);
       setTimeout(() => {
-        router.push('/game');
+        router.push('/home');
       }, 5500);
     }
     if (error) {
@@ -48,7 +48,7 @@ const Login = () => {
         tokenId,
       });
       localStorage.setItem('accessToken', result.data.data.accessToken);
-      router.push('/game');
+      router.push('/home');
     } catch (error) {
       console.log(error.response);
     }

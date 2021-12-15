@@ -28,7 +28,7 @@ export const registerUser = (userData) => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.post(`${apiUrl}/registe`, userData, config);
+    const { data } = await axios.post(`${apiUrl}/register`, userData, config);
 
     setTimeout(() => {
       dispatch({
