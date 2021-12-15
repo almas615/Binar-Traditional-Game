@@ -55,7 +55,7 @@ const ResetPassword = ({ props }) => {
         toast.success(result.data.message);
         setTimeout(() => {
           router.push('/login');
-        }, 6000);
+        }, 5500);
       }
     } catch (error) {
       console.log(error.reposne);

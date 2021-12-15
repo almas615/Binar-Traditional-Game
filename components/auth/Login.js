@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearErrors, userLogin } from '../../redux/actions/userActions';
+import { clearErrors, loginUser } from '../../redux/actions/userActions';
 import { useRouter } from 'next/router';
 import { toast } from 'react-toastify';
 import ButtonLoader from '../../components/layout/ButtonLoader';
@@ -21,7 +21,7 @@ const Login = () => {
       toast.success(success);
       setTimeout(() => {
         router.push('/game');
-      }, 6000);
+      }, 5500);
     }
     if (error) {
       toast.error(error);
@@ -36,7 +36,7 @@ const Login = () => {
       password,
     };
 
-    dispatch(userLogin(loginData));
+    dispatch(loginUser(loginData));
   };
 
   const responseGoogle = async (response) => {

@@ -1,13 +1,23 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import { UPDATE_PROFILE_RESET } from '../../redux/constants/userConstants';
 import router, { useRouter } from 'next/router';
 
 import { toast } from 'react-toastify';
 import ButtonLoader from '../layout/ButtonLoader';
 import Loader from '../layout/Loader';
+import {
+  clearErrors,
+  loadUser,
+  updateUser,
+} from '../../redux/actions/userActions';
+import { useDispatch } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const Profile = () => {
-  const [user, setUser] = useState({
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  const [updateData, setUpdateData] = useState({
     first_name: '',
     last_name: '',
     email: '',
@@ -18,7 +28,6 @@ const Profile = () => {
     social_media_url: '',
     password: '',
   });
-  const [loading, setLoading] = useState(false);
 
   const {
     first_name,
@@ -29,66 +38,93 @@ const Profile = () => {
     bio,
     location,
     social_media_url,
-  } = user;
+  } = updateData;
+
+  // console.log(updateData, 'ini updateData');
+
+  const { user: loadedUser, loading } = useSelector((state) => state.load);
+
+  const {
+    error,
+    isUpdated,
+    loading: updateLoading,
+  } = useSelector((state) => state.update);
 
   useEffect(async () => {
-    try {
-      const config = {
-        headers: {
-          authorization: `${localStorage.getItem('accessToken')}`,
-        },
-      };
-      const result = await axios.get('http://localhost:4000/api/me', config);
-      setUser({
-        first_name: result.data.user.first_name,
-        last_name: result.data.user.last_name,
-        email: result.data.user.email,
-        username: result.data.user.username,
-        password: result.data.user.password,
-        bio: result.data.user.bio,
-        location: result.data.user.location,
-        social_media_url: result.data.user.social_media_url,
+    // console.log(loadedUser, 'halo');
+    if (loadedUser) {
+      setUpdateData({
+        first_name: loadedUser.first_name,
+        last_name: loadedUser.last_name,
+        email: loadedUser.email,
+        username: loadedUser.username,
+        password: loadedUser.password,
+        bio: loadedUser.bio,
+        location: loadedUser.loacation,
+        social_media_url: loadedUser.social_media_url,
       });
-    } catch (error) {
-      console.log(error.response);
     }
-  }, []);
+
+    if (error) {
+      toast.error(error);
+      dispatch(clearErrors());
+    }
+
+    if (isUpdated) {
+      toast.success(isUpdated);
+      setTimeout(() => {
+        router.push('/game');
+      }, 5500);
+      dispatch({ type: UPDATE_PROFILE_RESET });
+    }
+  }, [dispatch, isUpdated, error, loadedUser]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
+    const userData = {
+      first_name,
+      last_name,
+      email,
+      username,
+      password,
+      bio,
+      location,
+      social_media_url,
+    };
 
-    setLoading(true);
-    try {
-      const config = {
-        headers: {
-          authorization: `${localStorage.getItem('accessToken')}`,
-        },
-      };
-      const userData = {
-        first_name,
-        last_name,
-        email,
-        username,
-        password,
-        bio,
-        location,
-        social_media_url,
-      };
+    dispatch(updateUser(userData));
 
-      const result = await axios.put(
-        'http://localhost:4000/api/user/me/update',
-        userData,
-        config
-      );
-      setLoading(false);
-      router.push('/game');
-    } catch (error) {
-      console.log(error.response);
-    }
+    // try {
+    //   const config = {
+    //     headers: {
+    //       authorization: `${localStorage.getItem('accessToken')}`,
+    //     },
+    //   };
+    //   const userData = {
+    //     first_name,
+    //     last_name,
+    //     email,
+    //     username,
+    //     password,
+    //     bio,
+    //     location,
+    //     social_media_url,
+    //   };
+
+    //   const result = await axios.put(
+    //     'http://localhost:4000/api/user/me/update',
+    //     userData,
+    //     config
+    //   );
+    //   setLoading(false);
+    //   router.push('/game');
+    // } catch (error) {
+    //   console.log(error.response);
+    // }
   };
 
   const onChange = (e) => {
-    setUser({ ...user, [e.target.name]: e.target.value });
+    setUpdateData({ ...updateData, [e.target.name]: e.target.value });
   };
 
   return (

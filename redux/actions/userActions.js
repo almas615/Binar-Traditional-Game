@@ -10,6 +10,10 @@ import {
   LOAD_USER_REQUEST,
   LOAD_USER_SUCCESS,
   LOAD_USER_FAIL,
+  UPDATE_PROFILE_REQUEST,
+  UPDATE_PROFILE_SUCCESS,
+  UPDATE_PROFILE_RESET,
+  UPDATE_PROFILE_FAIL,
   CLEAR_ERRORS,
 } from '../constants/userConstants';
 
@@ -41,7 +45,7 @@ export const registerUser = (userData) => async (dispatch) => {
   }
 };
 
-export const userLogin = (loginData) => async (dispatch) => {
+export const loginUser = (loginData) => async (dispatch) => {
   try {
     dispatch({
       type: LOGIN_USER_REQUEST,
@@ -86,6 +90,31 @@ export const loadUser = () => async (dispatch) => {
   } catch (error) {
     dispatch({
       type: LOAD_USER_FAIL,
+      payload: error.response,
+    });
+  }
+};
+
+export const updateUser = (userData) => async (dispatch) => {
+  try {
+    dispatch({ type: UPDATE_PROFILE_REQUEST });
+    const config = {
+      headers: {
+        authorization: `${localStorage.getItem('accessToken')}`,
+      },
+    };
+    const result = await axios.put(
+      'http://localhost:4000/api/user/me/update',
+      userData,
+      config
+    );
+
+    console.log(result, 'result');
+
+    dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: result.data.message });
+  } catch (error) {
+    dispatch({
+      type: UPDATE_PROFILE_FAIL,
       payload: error.response,
     });
   }

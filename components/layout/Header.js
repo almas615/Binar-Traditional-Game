@@ -5,7 +5,7 @@ import Link from 'next/link';
 
 const Header = () => {
   const dispatch = useDispatch();
-  const { user, loading } = useSelector((state) => state.loadUser);
+  const { user, loading } = useSelector((state) => state.load);
 
   useEffect(() => {
     dispatch(loadUser());

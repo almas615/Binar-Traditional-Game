@@ -8,7 +8,12 @@ import {
   LOAD_USER_REQUEST,
   LOAD_USER_SUCCESS,
   LOAD_USER_FAIL,
+  UPDATE_PROFILE_REQUEST,
+  UPDATE_PROFILE_SUCCESS,
+  UPDATE_PROFILE_RESET,
+  UPDATE_USER_FAIL,
   CLEAR_ERRORS,
+  UPDATE_PROFILE_FAIL,
 } from '../constants/userConstants';
 
 // Register reducer
@@ -65,8 +70,8 @@ export const loginReducer = (state = {}, action) => {
   }
 };
 
-// loadUserReducer
-export const loadUserReducer = (state = { user: null }, action) => {
+// loadReducer
+export const loadReducer = (state = { user: null }, action) => {
   switch (action.type) {
     case LOAD_USER_REQUEST:
       return {
@@ -80,6 +85,38 @@ export const loadUserReducer = (state = { user: null }, action) => {
     case LOAD_USER_FAIL:
       return {
         loading: true,
+        error: action.payload,
+      };
+    case CLEAR_ERRORS:
+      return {
+        ...state,
+        error: null,
+      };
+    default:
+      return state;
+  }
+};
+
+// updateReducer
+export const updateReducer = (state = {}, action) => {
+  switch (action.type) {
+    case UPDATE_PROFILE_REQUEST:
+      return {
+        loading: true,
+      };
+    case UPDATE_PROFILE_SUCCESS:
+      return {
+        loading: false,
+        isUpdated: action.payload,
+      };
+    case UPDATE_PROFILE_RESET:
+      return {
+        loading: false,
+        isUpdated: false,
+      };
+    case UPDATE_PROFILE_FAIL:
+      return {
+        loading: false,
         error: action.payload,
       };
     case CLEAR_ERRORS:

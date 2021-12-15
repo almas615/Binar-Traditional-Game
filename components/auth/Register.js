@@ -27,7 +27,7 @@ const Register = () => {
       toast.success(success);
       setTimeout(() => {
         router.push('/login');
-      }, 6000);
+      }, 5500);
     }
 
     if (error) {
