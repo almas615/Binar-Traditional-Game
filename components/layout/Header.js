@@ -43,9 +43,15 @@ const Header = () => {
                   alt="Binar"
                   height="60px"
                 />
-              </Link>
+              </Link>&nbsp; &nbsp;
+              <a className="navbrand">BINAR GAMES</a>
             </div>
           </div>
+          
+          <a className="btn nav-links" href="/">HOME</a>
+          <a className="btn nav-links" href="/">LIST GAMES</a>
+          <a className="btn nav-links" href="/">NEWSLETTER</a>
+          <a className="btn nav-links" href="/">CONTACT</a>
 
           <div className="col-3 mt-3 mt-md-0 text-center">
             {user ? (
@@ -57,29 +63,25 @@ const Header = () => {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <span>{user && user.username}</span>
+                  <span>{user && user.first_name} {user && user.last_name}</span>
                 </a>
 
                 <div
                   className="dropdown-menu"
                   aria-labelledby="dropDownMenuButton"
                 >
-                  <Link href="/me/profile">
-                    <a className="dropdown-item">Profile</a>
-                  </Link>
-                  <Link href="/">
-                    <a className="dropdown-item" onClick={logoutHandler}>
-                      Logout
-                    </a>
-                  </Link>
+                <Link href="/me/profile">
+                  <a className="dropdown-item">Profile</a>
+                </Link>
+                <Link href="/">
+                  <a className="dropdown-item" onClick={logoutHandler}>Logout</a>
+                </Link>
                 </div>
               </div>
             ) : (
               !loading && (
                 <Link href="/login">
-                  <a className="btn btn-primary px-4 text-white login-header-btn float-right">
-                    Login
-                  </a>
+                  <a className="btn px-4 text-white login-header-btn float-right login-btn">Login</a>
                 </Link>
               )
             )}

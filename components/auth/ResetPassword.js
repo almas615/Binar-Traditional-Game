@@ -63,56 +63,58 @@ const ResetPassword = ({ props }) => {
   };
 
   return (
-    <div className="container container-fluid">
-      <div className="row wrapper">
-        <div className="col-10 col-lg-5">
-          <form className="shadow-lg reset" onSubmit={handleSubmit}>
-            <h1 className="mb-3" style={{ textAlign: 'center' }}>
-              Reset Password
-            </h1>
-            {errorDoesntMatch && (
-              <p className="text-danger">{errorDoesntMatch}</p>
-            )}
-            <div className="form-group">
-              <label htmlFor="password_field">New Password</label>
-              {errorNewPassword && (
-                <p className="text-danger">{errorNewPassword}</p>
+    <div className="auth-background">
+      <div className="container container-fluid">
+        <div className="row wrapper">
+          <div className="col-10 col-lg-5">
+            <form className="shadow-lg reset" onSubmit={handleSubmit}>
+              <h1 className="mb-3" style={{ textAlign: 'center' }}>
+                RESET PASSWORD
+              </h1>
+              {errorDoesntMatch && (
+                <p className="text-danger">{errorDoesntMatch}</p>
               )}
-              <input
-                type="password"
-                id="password_field"
-                className="form-control"
-                name="password"
-                value={newPassword}
-                placeholder="Enter a new password..."
-                onChange={changeNewPassword}
-              />
-            </div>
+              <div className="form-group">
+                <label htmlFor="password_field">New Password</label>
+                {errorNewPassword && (
+                  <p className="text-danger">{errorNewPassword}</p>
+                )}
+                <input
+                  type="password"
+                  id="password_field"
+                  className="form-control"
+                  name="password"
+                  value={newPassword}
+                  placeholder="Enter a new password..."
+                  onChange={changeNewPassword}
+                />
+              </div>
 
-            <div className="form-group">
-              <label htmlFor="password_field">Confirm Password</label>
-              {errorConfirmPassword && (
-                <p className="text-danger">{errorConfirmPassword}</p>
-              )}
-              <input
-                type="password"
-                id="password_field"
-                className="form-control"
-                name="password"
-                value={confirmPassword}
-                placeholder="Enter a confirm password..."
-                onChange={changeConfirmPassword}
-              />
-            </div>
+              <div className="form-group">
+                <label htmlFor="password_field">Confirm Password</label>
+                {errorConfirmPassword && (
+                  <p className="text-danger">{errorConfirmPassword}</p>
+                )}
+                <input
+                  type="password"
+                  id="password_field"
+                  className="form-control"
+                  name="password"
+                  value={confirmPassword}
+                  placeholder="Enter a confirm password..."
+                  onChange={changeConfirmPassword}
+                />
+              </div>
 
-            <button
-              id="login_button"
-              className="btn btn-block py-3"
-              style={{ marginBottom: '10px' }}
-            >
-              Submit
-            </button>
-          </form>
+              <button
+                id="login_button"
+                className="btn btn-block py-3"
+                style={{ marginBottom: '10px' }}
+              >
+                SUBMIT
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>

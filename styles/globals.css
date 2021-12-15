@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Road+Rage&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500;900&display=swap');
+
 html,
 body {
   width: 100%;
@@ -15,6 +18,68 @@ a {
 * {
   box-sizing: border-box;
 }
+
+/* Header */
+.navbar {
+  background: #0a1f30;
+  font-family: 'Lato', sans-serif;
+}
+
+.navbar .navbrand {
+  color: white;
+  font-size: 35px;
+  font-family: 'Road Rage', cursive;
+}
+
+.navbar .navbrand:hover {
+  color: white;
+  cursor: default;
+}
+
+.navbar .container .nav-links {
+  color: white;
+  text-decoration: none;
+  border-radius: 1rem;
+}
+
+.navbar .container .nav-links:hover {
+  color: #f00;
+}
+
+.navbar .login-btn {
+  background-color: #f00;
+  color: white;
+  border-radius: 1rem;
+}
+
+.navbar .login-btn:hover {
+  background-color: #03090e;
+}
+
+.navbar .dropdown-toggle {
+  background-color: #f00;
+  border-radius: 1rem;
+}
+
+.navbar .dropdown-toggle:hover {
+  background-color: #03090e;
+}
+
+.navbar .dropdown-toggle span {
+  color: white;
+}
+
+.navbar .dropdown-menu a {
+  color: #0a1f30;
+}
+
+/* Footer */
+footer {
+  background: #0a1f30;
+  color: white;
+  font-size: small;
+}
+
 
 /* Button Loader */
 .lds-dual-ring {
@@ -43,31 +108,41 @@ a {
 
 /* Login & Register */
 
+.auth-background {
+  background-image: url('../public/img/bgconsole.jpg');
+  background-repeat: repeat;
+  background-size: 30%;
+  color: #0a1f30;
+}
+
 .wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-top: 5rem;
+  margin-top: 0rem;
   font-weight: 700;
-  margin-bottom: 2rem;
+  margin-bottom: 0rem;
+  height: 222mm;
 }
 
 .wrapper form {
   margin-top: -4rem;
   padding: 2.5rem 3rem;
   height: 34rem;
+  background-color: white;
+  border-radius: 1rem;
 }
 
 .wrapper .reg {
-  padding: 1rem 3rem;
-  height: 35rem;
+  padding: 2.5rem 3rem;
+  height: 45rem;
   margin-top: -3.5rem;
   margin-bottom: -2.1rem;
 }
 
 .wrapper .forgot {
   padding: 2rem 3rem;
-  height: 18rem;
+  height: 20rem;
   margin-top: 5rem;
   margin-bottom: 3rem;
 }
@@ -79,7 +154,7 @@ a {
 }
 
 .wrapper .reset .btn {
-  background-color: #6984cf;
+  background-color: #f00;
   border-color: white;
   border-radius: 7px;
   color: white;
@@ -88,7 +163,7 @@ a {
 }
 
 .wrapper .forgot .btn {
-  background-color: #6984cf;
+  background-color: #f00;
   border-color: white;
   border-radius: 7px;
   color: white;
@@ -97,7 +172,7 @@ a {
 }
 
 .wrapper form .btn {
-  background-color: #6984cf;
+  background-color: #f00;
   border-color: white;
   border-radius: 7px;
   color: white;
@@ -111,11 +186,50 @@ a {
 
 .wrapper form a {
   font-size: 0.9rem;
-  color: blueviolet;
+  color: rgb(0, 0, 240);
 }
 
 /* Update Form */
 
+.update-background {
+  background-image: url('../public/img/bgconsole.jpg');
+  background-repeat: repeat;
+  background-size: 30%;
+  color: #0a1f30;
+  height: 280mm;
+}
+
 .wrapper .update-form form {
   height: 58rem;
+  margin-top: 3rem;
+}
+
+/* Profile Details */
+.profile-bg-image {
+  background-image: url('../public/img/bgconsole.jpg');
+  background-repeat: repeat;
+  background-size: 30%;
+  color: #0a1f30;
+  font-family: 'Poppins', sans-serif;
+}
+
+.profile-background {
+  background-color: #f6f8ffe3;
+  border-radius: 7rem;
+  width: 100%;
+  height: 222mm;
+}
+
+.profile-bg-image .btn {
+  background-color: #f00;
+  border-radius: 7px;
+  color: white;
+  font-size: larger;
+  font-family: 'Lato', sans-serif !important;
+}
+
+.img {
+  border-radius: 50%;
+  border: 5px solid #0a1f30;
+  background-color: lightgray;
 }

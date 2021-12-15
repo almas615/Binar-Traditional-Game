@@ -49,8 +49,9 @@ const DetailsProfile = () => {
   }, []);
 
   return (
-        <div className="profile-bg">
-                <div className="container">
+        <div className="profile-bg-image">
+            <div>
+                <div className="container profile-background">
                     <br/>
                     <br/>
                     <div className="text-center">
@@ -84,13 +85,15 @@ const DetailsProfile = () => {
                             <div className="col-10">{social_media_url}</div>
                         </div>
                         <br/>
+                        <br/>
                         <div className="text-center">
-                            <a className="btn btn-primary px-5 text-white" href="/me/update">Update</a>
+                            <a className="btn" href="/me/update">Update your profile</a>
                         </div>
                     </div>
                     <br/>
                 </div>
             </div>
+        </div>
   );
 };
 
