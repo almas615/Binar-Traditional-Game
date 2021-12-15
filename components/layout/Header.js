@@ -48,10 +48,10 @@ const Header = () => {
             </div>
           </div>
           
-          <a className="btn nav-links" href="/home">HOME</a>
-          <a className="btn nav-links" href="/game">LIST GAMES</a>
-          <a className="btn nav-links" href="/">NEWSLETTER</a>
-          <a className="btn nav-links" href="/">CONTACT</a>
+          <Link href="/home"><a className="btn nav-links">HOME</a></Link>
+          <Link href="/game"><a className="btn nav-links">GAMES LIST</a></Link>
+          <Link href="/"><a className="btn nav-links">NEWSLETTER</a></Link>
+          <Link href="/"><a className="btn nav-links">CONTACT</a></Link>
 
           <div className="col-3 mt-3 mt-md-0 text-center">
             {user ? (

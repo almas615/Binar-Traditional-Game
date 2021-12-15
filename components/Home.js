@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Image from 'next/image'
+import Link from 'next/link';
 
 const Home = () => {
   const [user, setUser] = useState({
@@ -39,7 +40,7 @@ const Home = () => {
                     <h1>Hello, {first_name} {last_name}!</h1><br/>
                     <p>Welcome to Binar Games.</p>
                     <p>We've got hundreds of free online games for you to play.</p><br/>
-                    <a className="btn" href='/game'>START BROWSING</a>
+                    <Link href='/game'><a className="btn">START BROWSING</a></Link>
                     <br/>
                     <br/>
                 </div><br/><br/>
