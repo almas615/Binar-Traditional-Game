@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
+const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+
 const ResetPassword = ({ props }) => {
   const router = useRouter();
   const [newPassword, setNewPassword] = useState('');
@@ -45,10 +47,7 @@ const ResetPassword = ({ props }) => {
         newPassword,
         token: router.query.token,
       };
-      const result = await axios.put(
-        'http://localhost:4000/api/resetPassword',
-        data
-      );
+      const result = await axios.put(`${apiUrl}/resetPassword`, data);
       if (result) {
         setNewPassword('');
         setConfirmPassword('');

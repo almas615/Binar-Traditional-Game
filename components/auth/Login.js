@@ -8,6 +8,8 @@ import GoogleLogin from 'react-google-login';
 import Link from 'next/link';
 import axios from 'axios';
 
+const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+
 const Login = () => {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -42,7 +44,7 @@ const Login = () => {
   const responseGoogle = async (response) => {
     try {
       const tokenId = response.tokenId;
-      const result = await axios.post('http://localhost:4000/api/loginGoogle', {
+      const result = await axios.post(`${apiUrl}/loginGoogle`, {
         tokenId,
       });
       localStorage.setItem('accessToken', result.data.data.accessToken);

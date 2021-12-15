@@ -17,6 +17,7 @@ import {
   CLEAR_ERRORS,
 } from '../constants/userConstants';
 
+const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 // Register user
 export const registerUser = (userData) => async (dispatch) => {
   try {
@@ -27,21 +28,21 @@ export const registerUser = (userData) => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.post(
-      'http://localhost:4000/api/register',
-      userData,
-      config
-    );
+    const { data } = await axios.post(`${apiUrl}/registe`, userData, config);
 
-    dispatch({
-      type: REGISTER_USER_SUCCESS,
-      payload: data.message,
-    });
+    setTimeout(() => {
+      dispatch({
+        type: REGISTER_USER_SUCCESS,
+        payload: data.message,
+      });
+    }, 1000);
   } catch (error) {
-    dispatch({
-      type: REGISTER_USER_FAIL,
-      payload: error.response.data.error,
-    });
+    setTimeout(() => {
+      dispatch({
+        type: REGISTER_USER_FAIL,
+        payload: error.response.data.error,
+      });
+    }, 1000);
   }
 };
 
@@ -56,23 +57,23 @@ export const loginUser = (loginData) => async (dispatch) => {
       },
     };
 
-    const { data } = await axios.post(
-      'http://localhost:4000/api/login',
-      loginData,
-      config
-    );
+    const { data } = await axios.post(`${apiUrl}/login`, loginData, config);
 
     localStorage.setItem('accessToken', data.data.accessToken);
 
-    dispatch({
-      type: LOGIN_USER_SUCCESS,
-      payload: data.message,
-    });
+    setTimeout(() => {
+      dispatch({
+        type: LOGIN_USER_SUCCESS,
+        payload: data.message,
+      });
+    }, 1000);
   } catch (error) {
-    dispatch({
-      type: LOGIN_USER_FAIL,
-      payload: error.response.data.message,
-    });
+    setTimeout(() => {
+      dispatch({
+        type: LOGIN_USER_FAIL,
+        payload: error.response.data.message,
+      });
+    }, 1000);
   }
 };
 
@@ -85,7 +86,7 @@ export const loadUser = () => async (dispatch) => {
         authorization: `${localStorage.getItem('accessToken')}`,
       },
     };
-    const result = await axios.get('http://localhost:4000/api/me', config);
+    const result = await axios.get(`${apiUrl}/me`, config);
     dispatch({ type: LOAD_USER_SUCCESS, payload: result.data.user });
   } catch (error) {
     dispatch({
@@ -104,19 +105,21 @@ export const updateUser = (userData) => async (dispatch) => {
       },
     };
     const result = await axios.put(
-      'http://localhost:4000/api/user/me/update',
+      `${apiUrl}/user/me/update`,
       userData,
       config
     );
 
-    console.log(result, 'result');
-
-    dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: result.data.message });
+    setTimeout(() => {
+      dispatch({ type: UPDATE_PROFILE_SUCCESS, payload: result.data.message });
+    }, 1000);
   } catch (error) {
-    dispatch({
-      type: UPDATE_PROFILE_FAIL,
-      payload: error.response,
-    });
+    setTimeout(() => {
+      dispatch({
+        type: UPDATE_PROFILE_FAIL,
+        payload: error.response.data.error,
+      });
+    }, 1000);
   }
 };
 

@@ -40,8 +40,6 @@ const Profile = () => {
     social_media_url,
   } = updateData;
 
-  // console.log(updateData, 'ini updateData');
-
   const { user: loadedUser, loading } = useSelector((state) => state.load);
 
   const {
@@ -51,7 +49,6 @@ const Profile = () => {
   } = useSelector((state) => state.update);
 
   useEffect(async () => {
-    // console.log(loadedUser, 'halo');
     if (loadedUser) {
       setUpdateData({
         first_name: loadedUser.first_name,
@@ -93,34 +90,6 @@ const Profile = () => {
     };
 
     dispatch(updateUser(userData));
-
-    // try {
-    //   const config = {
-    //     headers: {
-    //       authorization: `${localStorage.getItem('accessToken')}`,
-    //     },
-    //   };
-    //   const userData = {
-    //     first_name,
-    //     last_name,
-    //     email,
-    //     username,
-    //     password,
-    //     bio,
-    //     location,
-    //     social_media_url,
-    //   };
-
-    //   const result = await axios.put(
-    //     'http://localhost:4000/api/user/me/update',
-    //     userData,
-    //     config
-    //   );
-    //   setLoading(false);
-    //   router.push('/game');
-    // } catch (error) {
-    //   console.log(error.response);
-    // }
   };
 
   const onChange = (e) => {
@@ -237,9 +206,9 @@ const Profile = () => {
                   id="login_button"
                   type="submit"
                   className="btn btn-block py-3"
-                  disabled={loading ? true : false}
+                  disabled={updateLoading ? true : false}
                 >
-                  {loading ? <ButtonLoader /> : 'UPDATE'}
+                  {updateLoading ? <ButtonLoader /> : 'UPDATE'}
                 </button>
               </form>
             </div>

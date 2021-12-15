@@ -57,7 +57,7 @@ export const loginReducer = (state = {}, action) => {
       };
     case LOGIN_USER_FAIL:
       return {
-        loading: true,
+        loading: false,
         error: action.payload,
       };
     case CLEAR_ERRORS:

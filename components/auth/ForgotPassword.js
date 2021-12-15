@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
+const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const sendEmail = async (e) => {
@@ -10,7 +12,7 @@ const ForgotPassword = () => {
     if (!email) {
       toast.error('Email is required');
     } else {
-      const res = await axios.put('http://localhost:4000/api/forgotPassword', {
+      const res = await axios.put(`${apiUrl}/forgotPassword`, {
         email,
       });
       setEmail('');
