@@ -109,7 +109,7 @@ function detail() {
 
                         <FacebookShareButton
                             style={{ width: "32px", marginRight: "20px" }}
-                            url={'https://github.com/next-share'}
+                            url={'https://binar-team-one-ch10-server.herokuapp.com/docs/'}
                             quote={'next-share is a social share buttons for your next React apps.'}
                             hashtag={'#nextshare'}
                         >
@@ -117,14 +117,14 @@ function detail() {
                         </FacebookShareButton>
                         <TwitterShareButton
                             style={{ width: "32px", marginRight: "20px" }}
-                            url={'https://github.com/next-share'}
+                            url={'https://binar-team-one-ch10-server.herokuapp.com/docs/'}
                             title={'next-share is a social share buttons for your next React apps.'}
                         >
                             <TwitterIcon size={32} round />
                         </TwitterShareButton>
                         <WhatsappShareButton
                             style={{ width: "32px", marginRight: "20px" }}
-                            url={'https://github.com/next-share'}
+                            url={'https://binar-team-one-ch10-server.herokuapp.com/docs/'}
                             title={'next-share is a social share buttons for your next React apps.'}
                             separator=":: "
                         >
