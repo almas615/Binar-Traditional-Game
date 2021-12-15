@@ -11,6 +11,13 @@ export const setUserId = (id) => ({
   payload: id,
 });
 
+export const setMonopoliScore = (score) => ({
+  type: 'SET_MONOPOLI_SCORE',
+  payload: score,
+});
+
+
+
 export function getUser() {
   return function (dispatch) {
     return fetch('https://jsonplaceholder.typicode.com/users')
