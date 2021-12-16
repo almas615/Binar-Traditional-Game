@@ -30,6 +30,10 @@ const Header = () => {
                   height="60px"
                 />
               </Link>
+              &nbsp; &nbsp;
+              <Link href="/" className="navbrand">
+                BINAR GAMES
+              </Link>
             </div>
           </div>
 
@@ -56,14 +60,16 @@ const Header = () => {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <span>{user && user.username}</span>
+                  <span>
+                    {user && user.first_name} {user && user.last_name}
+                  </span>
                 </a>
 
                 <div
                   className="dropdown-menu"
                   aria-labelledby="dropDownMenuButton"
                 >
-                  <Link href="/me/update">
+                  <Link href="/me/profile">
                     <a className="dropdown-item">Profile</a>
                   </Link>
                   <Link href="/">
@@ -76,7 +82,7 @@ const Header = () => {
             ) : (
               loading && (
                 <Link href="/login">
-                  <a className="btn btn-primary px-4 text-white login-header-btn float-right">
+                  <a className="btn px-4 text-white login-header-btn float-right login-btn">
                     Login
                   </a>
                 </Link>

@@ -4,7 +4,7 @@ const Footer = () => {
   return (
     <footer className="py-1">
       <p className="text-center mt-1">
-        Binar Chapter 10 Challenge - 2021-2022, All Rights Reserved
+        © Binar Chapter 10 Challenge - 2021-2022. All rights reserved.
       </p>
     </footer>
   );
