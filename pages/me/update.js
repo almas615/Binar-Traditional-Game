@@ -1,6 +1,6 @@
 import React from 'react';
 
-import UpdateProfile from '../../components/user/Profile';
+import UpdateProfile from '../../components/user/UpdateProfile';
 import Layout from '../../components/layout/Layout';
 import withAuth from '../../HOC/withAuth';
 
