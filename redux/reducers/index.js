@@ -10,6 +10,7 @@ import { monopoliScoreReducer } from './monopoliScoreReducer';
 
 const reducer = combineReducers({
   played: getPlayedReducer,
+  monopoli: monopoliScoreReducer,
   register: registerReducer,
   login: loginReducer,
   load: loadReducer,

@@ -8,7 +8,7 @@ import { setMonopoliScore } from '../redux/actions/monopoliScoreActions';
 
 const mapStateToPros = (state) => {
   return {
-    monopoliScore: state.monopoliScore,
+    monopoliScore: state.monopoli,
   };
 };
 
@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const clickHandel = (props) => {
   let randomScore = Math.ceil(Math.random() * 10);
-  props.setMonopoliScore(props.monopoliScore + randomScore);
+  props.setMonopoliScore(props.monopoliScore.monopoliScore + randomScore);
 
   const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
   fetch(`${apiUrl}/score`, {
@@ -82,7 +82,7 @@ function monopoli(props) {
                   style={{ color: 'black' }}
                 >
                   {' '}
-                  Total Score = {props.monopoliScore}{' '}
+                  Total Score = {props.monopoliScore.monopoliScore}{' '}
                 </h1>
 
                 <button

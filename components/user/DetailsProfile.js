@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Link from 'next/link';
 import router, { useRouter } from 'next/router';
 
 const DetailsProfile = () => {
@@ -100,9 +101,9 @@ const DetailsProfile = () => {
             <br />
             <br />
             <div className="text-center">
-              <a className="btn" href="/me/update">
-                Update your profile
-              </a>
+              <Link href="/me/update">
+                <a className="btn">Update your profile</a>
+              </Link>
             </div>
           </div>
           <br />

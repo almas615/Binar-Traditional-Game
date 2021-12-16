@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import axios from 'axios';
 import Image from 'next/image';
 
@@ -40,9 +41,9 @@ const Home = () => {
           <p>Welcome to Binar Games.</p>
           <p>We've got hundreds of free online games for you to play.</p>
           <br />
-          <a className="btn" href="/game">
-            START BROWSING
-          </a>
+          <Link href="/game">
+            <a className="btn">START BROWSING</a>
+          </Link>
           <br />
           <br />
         </div>
