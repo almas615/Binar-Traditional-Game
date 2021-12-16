@@ -81,7 +81,7 @@ function detail() {
                   </h1>
 
                   <a
-                    href="/game/1"
+                    href={game.game_url}
                     className="btn  mt-3"
                     style={{
                       color: 'white',
