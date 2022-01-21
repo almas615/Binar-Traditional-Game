@@ -60,6 +60,13 @@ const Header = () => {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
+                  <figure className="avatar avatar-nav">
+                    <img
+                      src={user.avatar_public_id && user.avatar_url}
+                      alt={user && user.name}
+                      className="rounded-circle"
+                    />
+                  </figure>
                   <span>
                     {user && user.first_name} {user && user.last_name}
                   </span>
