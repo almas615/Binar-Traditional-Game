@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
+const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+
 const ResetPassword = ({ props }) => {
   const router = useRouter();
   const [newPassword, setNewPassword] = useState('');
@@ -45,17 +47,14 @@ const ResetPassword = ({ props }) => {
         newPassword,
         token: router.query.token,
       };
-      const result = await axios.put(
-        'http://localhost:4000/api/resetPassword',
-        data
-      );
+      const result = await axios.put(`${apiUrl}/resetPassword`, data);
       if (result) {
         setNewPassword('');
         setConfirmPassword('');
         toast.success(result.data.message);
         setTimeout(() => {
           router.push('/login');
-        }, 6000);
+        }, 5500);
       }
     } catch (error) {
       console.log(error.reposne);
@@ -69,7 +68,7 @@ const ResetPassword = ({ props }) => {
           <div className="col-10 col-lg-5">
             <form className="shadow-lg reset" onSubmit={handleSubmit}>
               <h1 className="mb-3" style={{ textAlign: 'center' }}>
-                RESET PASSWORD
+                Reset Password
               </h1>
               {errorDoesntMatch && (
                 <p className="text-danger">{errorDoesntMatch}</p>
@@ -111,7 +110,7 @@ const ResetPassword = ({ props }) => {
                 className="btn btn-block py-3"
                 style={{ marginBottom: '10px' }}
               >
-                SUBMIT
+                Submit
               </button>
             </form>
           </div>

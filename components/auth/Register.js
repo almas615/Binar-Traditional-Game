@@ -1,14 +1,15 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import Link from 'next/link';
-import axios from 'axios';
 import { useRouter } from 'next/router';
 
 import { toast } from 'react-toastify';
 import ButtonLoader from '../layout/ButtonLoader';
+import { clearErrors, registerUser } from '../../redux/actions/userActions';
 
 const Register = () => {
   const router = useRouter();
-  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
   const [user, setUser] = useState({
     first_name: '',
     last_name: '',
@@ -18,6 +19,22 @@ const Register = () => {
   });
 
   const { first_name, last_name, email, username, password } = user;
+
+  const { success, error, loading } = useSelector((state) => state.register);
+
+  useEffect(() => {
+    if (success) {
+      toast.success(success);
+      setTimeout(() => {
+        router.push('/login');
+      }, 5500);
+    }
+
+    if (error) {
+      toast.error(error);
+      dispatch(clearErrors());
+    }
+  }, [dispatch, success, error]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -30,20 +47,7 @@ const Register = () => {
       password,
     };
 
-    setLoading(true);
-
-    try {
-      const result = await axios.post(
-        'http://localhost:4000/api/register',
-        userData
-      );
-      router.push('/login');
-    } catch (error) {
-      setTimeout(() => {
-        setLoading(false);
-        toast.error(error.response.data.error);
-      }, 1000);
-    }
+    dispatch(registerUser(userData));
   };
 
   const onChange = (e) => {
@@ -60,10 +64,10 @@ const Register = () => {
                 className="mb-3"
                 style={{ textAlign: 'center', marginTop: '-0.6rem' }}
               >
-                REGISTER
+                SIGN UP
               </h1>
 
-              <div className="form-group">
+              <div className="form-group" style={{ display: 'inline' }}>
                 <label htmlFor="first_name_field">First Name</label>
                 <input
                   type="text"
@@ -73,9 +77,6 @@ const Register = () => {
                   value={first_name}
                   onChange={onChange}
                 />
-              </div>
-
-              <div className="form-group">
                 <label htmlFor="last_name_field">Last Name</label>
                 <input
                   type="text"
@@ -122,7 +123,6 @@ const Register = () => {
                   onChange={onChange}
                 />
               </div>
-              <br/>
 
               <button
                 id="login_button"
@@ -130,12 +130,12 @@ const Register = () => {
                 className="btn btn-block py-3"
                 disabled={loading ? true : false}
               >
-                {loading ? <ButtonLoader /> : 'SIGN UP'}
-              </button><br/><br/>
+                {loading ? <ButtonLoader /> : 'Sign up'}
+              </button>
               <span className="float-left mt-2">
-                Already have an account? &nbsp;
+                Already have an account?
                 <Link href="/login" class="float-right mt-3">
-                  Sign In
+                  Sign in
                 </Link>
               </span>
             </form>

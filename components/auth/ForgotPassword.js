@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
+const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
+
 const ForgotPassword = () => {
   const [email, setEmail] = useState('');
   const sendEmail = async (e) => {
@@ -10,7 +12,7 @@ const ForgotPassword = () => {
     if (!email) {
       toast.error('Email is required');
     } else {
-      const res = await axios.put('http://localhost:4000/api/forgotPassword', {
+      const res = await axios.put(`${apiUrl}/forgotPassword`, {
         email,
       });
       setEmail('');
@@ -25,7 +27,7 @@ const ForgotPassword = () => {
           <div className="col-10 col-lg-5">
             <form className="shadow-lg forgot" onSubmit={sendEmail}>
               <h1 className="mb-3" style={{ textAlign: 'center' }}>
-                FORGOT PASSWORD
+                Forgot Password
               </h1>
               <div className="form-group">
                 <label htmlFor="email_field">Email</label>
@@ -45,7 +47,7 @@ const ForgotPassword = () => {
                 className="btn btn-block py-3"
                 style={{ marginBottom: '10px' }}
               >
-                SUBMIT
+                Submit
               </button>
             </form>
           </div>

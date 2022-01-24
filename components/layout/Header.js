@@ -1,29 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import jwt_decode from 'jwt-decode';
+import { useSelector, useDispatch } from 'react-redux';
+import { loadUser } from '../../redux/actions/userActions';
 import Link from 'next/link';
-import router from 'next/router';
 
 const Header = () => {
-  const [user, setUser] = useState(null);
-  const [loading, setLoading] = useState(false);
+  const dispatch = useDispatch();
+  const { user, loading } = useSelector((state) => state.load);
 
-  useEffect(async () => {
-    try {
-      const config = {
-        headers: {
-          authorization: `${localStorage.getItem('accessToken')}`,
-        },
-      };
-      const result = await axios.get('http://localhost:4000/api/me', config);
-      setUser(result.data.user);
-    } catch (error) {
-      setTimeout(() => {
-        setLoading(false);
-        // toast.error(error.response.data.message);
-      }, 1000);
-    }
-  }, []);
+  useEffect(() => {
+    dispatch(loadUser());
+  }, [dispatch]);
 
   const logoutHandler = () => {
     localStorage.clear();
@@ -43,15 +29,26 @@ const Header = () => {
                   alt="Binar"
                   height="60px"
                 />
-              </Link>&nbsp; &nbsp;
-              <a className="navbrand">BINAR GAMES</a>
+              </Link>
+              &nbsp; &nbsp;
+              <Link href="/" className="navbrand">
+                BINAR GAMES
+              </Link>
             </div>
           </div>
 
-          <a className="btn nav-links" href="/home">HOME</a>
-          <a className="btn nav-links" href="/game">LIST GAMES</a>
-          <a className="btn nav-links" href="/">NEWSLETTER</a>
-          <a className="btn nav-links" href="/">CONTACT</a>
+          <Link href="/home">
+            <a className="btn nav-links">HOME</a>
+          </Link>
+          <Link href="/game">
+            <a className="btn nav-links">GAMES LIST</a>
+          </Link>
+          <Link href="/">
+            <a className="btn nav-links">NEWSLETTER</a>
+          </Link>
+          <Link href="/">
+            <a className="btn nav-links">CONTACT</a>
+          </Link>
 
           <div className="col-3 mt-3 mt-md-0 text-center">
             {user ? (
@@ -63,7 +60,9 @@ const Header = () => {
                   aria-haspopup="true"
                   aria-expanded="false"
                 >
-                  <span>{user && user.first_name} {user && user.last_name}</span>
+                  <span>
+                    {user && user.first_name} {user && user.last_name}
+                  </span>
                 </a>
 
                 <div
@@ -74,14 +73,18 @@ const Header = () => {
                     <a className="dropdown-item">Profile</a>
                   </Link>
                   <Link href="/">
-                    <a className="dropdown-item" onClick={logoutHandler}>Logout</a>
+                    <a className="dropdown-item" onClick={logoutHandler}>
+                      Logout
+                    </a>
                   </Link>
                 </div>
               </div>
             ) : (
-              !loading && (
+              loading && (
                 <Link href="/login">
-                  <a className="btn px-4 text-white login-header-btn float-right login-btn">Login</a>
+                  <a className="btn px-4 text-white login-header-btn float-right login-btn">
+                    Login
+                  </a>
                 </Link>
               )
             )}

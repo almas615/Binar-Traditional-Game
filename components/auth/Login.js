@@ -1,44 +1,50 @@
-import React, { useState } from 'react';
-import GoogleButton from 'react-google-button';
-import Link from 'next/link';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearErrors, loginUser } from '../../redux/actions/userActions';
 import { useRouter } from 'next/router';
-import ButtonLoader from '../../components/layout/ButtonLoader';
-
 import { toast } from 'react-toastify';
-import axios from 'axios';
+import ButtonLoader from '../../components/layout/ButtonLoader';
 import GoogleLogin from 'react-google-login';
+import Link from 'next/link';
+import axios from 'axios';
+
+const apiUrl = process.env.NEXT_PUBLIC_API_BASE_URL;
 
 const Login = () => {
+  const dispatch = useDispatch();
+  const router = useRouter();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [loading, setLoading] = useState(false);
-  const router = useRouter();
+
+  const { loading, success, error } = useSelector((state) => state.login);
+
+  useEffect(() => {
+    if (success) {
+      toast.success(success);
+      setTimeout(() => {
+        router.push('/home');
+      }, 5500);
+    }
+    if (error) {
+      toast.error(error);
+      dispatch(clearErrors());
+    }
+  }, [dispatch, success, error]);
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    const data = {
+    const loginData = {
       username,
       password,
     };
 
-    setLoading(true);
-
-    try {
-      const result = await axios.post('http://localhost:4000/api/login', data);
-      localStorage.setItem('accessToken', result.data.data.accessToken);
-      router.push('/home');
-    } catch (error) {
-      setTimeout(() => {
-        setLoading(false);
-        toast.error(error.response.data.message);
-      }, 1000);
-    }
+    dispatch(loginUser(loginData));
   };
 
   const responseGoogle = async (response) => {
     try {
       const tokenId = response.tokenId;
-      const result = await axios.post('http://localhost:4000/api/loginGoogle', {
+      const result = await axios.post(`${apiUrl}/loginGoogle`, {
         tokenId,
       });
       localStorage.setItem('accessToken', result.data.data.accessToken);
@@ -55,7 +61,7 @@ const Login = () => {
           <div className="col-10 col-lg-5">
             <form className="shadow-lg" onSubmit={submitHandler}>
               <h1 className="mb-3" style={{ textAlign: 'center' }}>
-                LOGIN
+                SIGN IN
               </h1>
               <div className="form-group">
                 <label htmlFor="username_field">Username</label>
@@ -86,13 +92,11 @@ const Login = () => {
                 type="submit"
                 className="btn btn-block py-3"
                 disabled={loading ? true : false}
-                style={{ marginBottom: '10px', marginTop: '0px' }}
+                style={{ marginBottom: '10px' }}
               >
-                {loading ? <ButtonLoader /> : 'SIGN IN'}
+                {loading ? <ButtonLoader /> : 'LOGIN'}
               </button>
-              <br/>
-              <br/>
-              <span>LOGIN WITH &nbsp;</span>
+              <span>LOGIN WITH</span>
               <GoogleLogin
                 clientId="82188546756-iikurufha30hocipiu2f6f8i0hq91aua.apps.googleusercontent.com"
                 buttonText="GOOGLE"
@@ -100,9 +104,9 @@ const Login = () => {
                 onFailure={responseGoogle}
                 cookiePolicy={'single_host_origin'}
               />
-              <div><br/>
+              <div>
                 <span className="float-left mt-2">
-                  Don't have an account? &nbsp;
+                  Don't have an account?
                   <Link href="/register" class="float-right mt-3">
                     Sign Up
                   </Link>

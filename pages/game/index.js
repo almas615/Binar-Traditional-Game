@@ -1,22 +1,23 @@
+/* eslint-disable react/jsx-key */
 import React, { Fragment, useState, useEffect, Component } from 'react';
 import Layout from '../../components/layout/Layout';
 import withAuth from '../../HOC/withAuth';
 import Image from 'next/image';
 import axios from 'axios';
 
-import Pic1 from '../../public/img/RockPaperScissor.jpg';
+import Pic1 from '../../public/img/consolThumbnail.jpg';
 // import Pic2 from '../images/Coolsoccer.jpg'
 // import Pic3 from '../images/Spaceinvaders.jpg'
 // import Pic4 from '../images/Streetfighter.jpeg'
 
 import { connect } from 'react-redux';
-import { getPlayedGame } from '../../redux/actions';
+import { getPlayedGame } from '../../redux/actions/getPlayedActions';
 
 import style from '../../styles/ListGame.module.css';
 
 const mapStateToPros = (state) => {
   return {
-    playedGames: state.playedGames,
+    playedGames: state.played,
   };
 };
 
@@ -33,7 +34,7 @@ const playedTag = () => {
 const renderGameData = (game, playedGame) => {
   return game.map((game, index) => {
     let isPlayed = false;
-    playedGame.map((played) => {
+    playedGame.playedGames.map((played) => {
       if (game.id == played.gameId) {
         isPlayed = true;
       }
