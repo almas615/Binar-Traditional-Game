@@ -5,7 +5,7 @@ import withAuth from '../../HOC/withAuth';
 import Image from 'next/image';
 import axios from 'axios';
 
-// import Pic1 from '../../public/img/consolThumbnail.jpg';
+import Pic1 from '../../public/img/consolThumbnail.jpg';
 // import Pic2 from '../images/Coolsoccer.jpg'
 // import Pic3 from '../images/Spaceinvaders.jpg'
 // import Pic4 from '../images/Streetfighter.jpeg'
