@@ -1,7 +1,10 @@
-import React, { Fragment, useState, useEffect, Component } from 'react';
+/* eslint-disable react/jsx-key */
+/* eslint-disable react-hooks/rules-of-hooks */
+import React, { Fragment, useState, useEffect, useRef, Component } from 'react';
 import { useRouter, withRouter, NextRouter } from 'next/router';
 import Layout from '../../components/layout/Layout';
 import Image from 'next/image';
+import ReactPlayer from 'react-player';
 
 import prsPict from '../../public/img/RockPaperScissor.jpg';
 import {
@@ -15,6 +18,8 @@ import {
 
 import style from '../../styles/DetailGame.module.css';
 
+const sources = ''
+
 function renderTableData(leaderboard) {
   return leaderboard.map((e, index) => {
     return (
@@ -26,6 +31,65 @@ function renderTableData(leaderboard) {
       </tr>
     );
   });
+}
+
+function renderVidio(props) {
+  const ref = useRef();
+
+  const source = props.thumbnail_url;
+  const [playing, setPlaying] = useState(true);
+  const [muted, setMuted] = useState(true);
+  const [playbackRate, setPlaybackRate] = useState(1);
+  const [volume, setVolume] = useState(0.5);
+  const [loop, setLoop] = useState(true);
+  const play = () => setPlaying(true);
+  const pause = () => setPlaying(false);
+  const mute = () => setMuted(true);
+  const unmute = () => setMuted(false);
+
+  const faster = () => {
+    if (playbackRate < 10) {
+      setPlaybackRate(playbackRate + 1)
+    }
+  };
+
+  const slower = () => {
+    if (playbackRate > 0) {
+      setPlaybackRate(playbackRate - 1)
+    }
+  };
+
+  const louder = () => {
+    if (volume < 0.9) {
+      setVolume(volume + 0.1)
+      console.log(volume)
+    }
+  };
+
+  const quieter = () => {
+    if (volume > 0.1) {
+      setVolume(volume - 0.1)
+      console.log(volume)
+    }
+  };
+  if (source) {
+    return (
+      <div className={style['containerVidio']}>
+        <ReactPlayer
+          style={{ marginLeft: 'auto', marginRight: 'auto' }}
+          className={style['vidio']}
+          ref={ref}
+          url={source}
+          playing={playing}
+          muted={muted}
+          volume={volume}
+          playbackRate={playbackRate}
+          loop={loop}
+          controls='true'
+        />
+      </div>
+    );
+  }
 }
 function detail() {
   let [leaderboard, setLeaderboard] = useState([]);
@@ -62,13 +126,14 @@ function detail() {
                 className="row d-flex flex-column justify-content-center align-items-center"
                 style={{ minHeight: '100vh' }}
               >
-                <div className="col-6">
-                  <Image
+                <div className="col-11">
+                  {/* <Image
                     src={prsPict}
                     className="img d-block w-100"
                     alt="..."
                     layout="responsive"
-                  ></Image>
+                  ></Image> */}
+                  {renderVidio(game)}
                 </div>
                 <div className="col-11 d-flex flex-column justify-content-center">
                   <h1
