@@ -235,7 +235,7 @@ footer {
 
 /* Home */
 .home-bg-image {
-  background-image: url('./public/img/bgconsole.jpg');
+  background-image: url('../public/img/bgconsole.jpg');
   background-repeat: repeat;
   background-size: 30%;
   color: #0a1f30;
