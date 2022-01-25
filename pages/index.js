@@ -1,3 +1,5 @@
+/* eslint-disable react/jsx-key */
+/* eslint-disable @next/next/no-html-link-for-pages */
 import React, { Fragment, useEffect, useState } from 'react';
 
 import Layout from '../components/layout/Layout.js';
