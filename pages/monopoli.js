@@ -43,7 +43,7 @@ const clickHandel = (props) => {
     });
 };
 
-function monopoli(props) {
+function Monopoli(props) {
   const router = useRouter();
   // useEffect(() => {
   //     if (!router.isReady) return;
@@ -101,6 +101,6 @@ function monopoli(props) {
     </Fragment>
   );
 }
-const ShowScore = connect(mapStateToPros, mapDispatchToProps)(monopoli);
+const ShowScore = connect(mapStateToPros, mapDispatchToProps)(Monopoli);
 
 export default ShowScore;
