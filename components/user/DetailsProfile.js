@@ -33,7 +33,7 @@ const DetailsProfile = () => {
           authorization: `${localStorage.getItem('accessToken')}`,
         },
       };
-      const result = await axios.get('http://localhost:4000/api/me', config);
+      const result = await axios.get(`${process.env.NEXT_PUBLIC_API_BASE_URL}/me`, config);
       setUser({
         first_name: result.data.user.first_name,
         last_name: result.data.user.last_name,
