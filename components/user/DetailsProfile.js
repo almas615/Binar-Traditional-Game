@@ -16,6 +16,7 @@ const DetailsProfile = () => {
     social_media_url: '',
   });
 
+  const [avatarPreview, setAvatarPreview] = useState('/img/default_avatar.jpg');
   const {
     first_name,
     last_name,
@@ -43,6 +44,7 @@ const DetailsProfile = () => {
         location: result.data.user.location,
         social_media_url: result.data.user.social_media_url,
       });
+      setAvatarPreview(result.data.user.avatar_url);
     } catch (error) {
       console.log(error.response);
     }
@@ -57,7 +59,7 @@ const DetailsProfile = () => {
           <div className="text-center">
             <img
               className="img"
-              src="https://thumbs.dreamstime.com/b/default-avatar-profile-icon-vector-social-media-user-portrait-176256935.jpg"
+              src={avatarPreview}
               alt={user.name}
               width="150"
               height="150"
