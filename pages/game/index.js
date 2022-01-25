@@ -52,13 +52,13 @@ const renderGameData = (game, playedGame) => {
         <div className="card-body">
           <h5 className="card-title">{game.name}</h5>
           <p className="card-text">{game.description}</p>
-          <Link
+          <a
             href={`/game/${game.id}`}
             className="btn"
             style={{ backgroundColor: 'red', color: 'white' }}
           >
             Play Game
-          </Link>
+          </a>
           {isPlayed ? playedTag() : null}
         </div>
       </div>
