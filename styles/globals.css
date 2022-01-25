@@ -108,7 +108,7 @@ footer {
 /* Login & Register */
 
 .auth-background {
-  background-image: url('../public/img/bgconsole.jpg');
+  background-image: url('/img/bgconsole.jpg');
   background-repeat: repeat;
   background-size: 30%;
   color: #0a1f30;
@@ -191,7 +191,7 @@ footer {
 /* Update Form */
 
 .update-background {
-  background-image: url('../public/img/bgconsole.jpg');
+  background-image: url('/img/bgconsole.jpg');
   background-repeat: repeat;
   background-size: 30%;
   color: #0a1f30;
@@ -205,7 +205,7 @@ footer {
 
 /* Profile Details */
 .profile-bg-image {
-  background-image: url('../public/img/bgconsole.jpg');
+  background-image: url('/img/bgconsole.jpg');
   background-repeat: repeat;
   background-size: 30%;
   color: #0a1f30;
@@ -292,7 +292,7 @@ footer {
 }
 
 .game-list-bg {
-  background-image: url('../public/img/bgconsole.jpg');
+  background-image: url('/img/bgconsole.jpg');
 }
 
 .home-box {
@@ -340,5 +340,5 @@ footer {
 }
 
 .game-list-bg {
-  background-image: url('../public/img/bgconsole.jpg');
+  background-image: url('/img/bgconsole.jpg');
 }
