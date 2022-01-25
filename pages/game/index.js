@@ -1,8 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable jsx-a11y/alt-text */
 /* eslint-disable react/jsx-key */
 import React, { Fragment, useState, useEffect, Component } from 'react';
 import Layout from '../../components/layout/Layout';
 import withAuth from '../../HOC/withAuth';
 import Image from 'next/image';
+import Link from 'next/link'
 import axios from 'axios';
 
 import Pic1 from '../../public/img/consolThumbnail.jpg';
@@ -49,13 +52,13 @@ const renderGameData = (game, playedGame) => {
         <div className="card-body">
           <h5 className="card-title">{game.name}</h5>
           <p className="card-text">{game.description}</p>
-          <a
+          <Link
             href={`/game/${game.id}`}
             className="btn"
             style={{ backgroundColor: 'red', color: 'white' }}
           >
             Play Game
-          </a>
+          </Link>
           {isPlayed ? playedTag() : null}
         </div>
       </div>

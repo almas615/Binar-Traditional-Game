@@ -1,3 +1,5 @@
+/* eslint-disable @next/next/no-img-element */
+/* eslint-disable jsx-a11y/alt-text */
 import Image from 'next/image';
 import Script from 'next/script';
 import styles from '../styles/RPS.module.css';

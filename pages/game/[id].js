@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/jsx-key */
 /* eslint-disable react-hooks/rules-of-hooks */
 import React, { Fragment, useState, useEffect, useRef, Component } from 'react';
