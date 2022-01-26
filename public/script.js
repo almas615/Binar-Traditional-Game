@@ -145,7 +145,7 @@ class Game {
   }
 
   fetchUpdateScore() {
-    fetch('http://localhost:4000/api/score', {
+    fetch('https://binar-traditional-game-server.herokuapp.com/api/score', {
       method: 'put', // or 'PUT'
       headers: {
         'Content-Type': 'application/json',
